@@ -9,7 +9,8 @@ class Login extends Component {
         this.state = {
             password: '',
             email: '',
-            Loading: 'none'
+            Loading: 'none',
+            BlurValue:"0px"
         }
         this.handlePasswordChange = (event) => {
             this.setState({
@@ -23,7 +24,8 @@ class Login extends Component {
         }
         this.SubmitHandler = () => {
             this.setState({
-                Loading: 'block'
+                Loading: 'block',
+                BlurValue:"4px"
             })
             // axios.post('http://3.87.22.103:2024/signin',{
             //     email:this.state.email,
@@ -50,15 +52,19 @@ class Login extends Component {
                     backgroundColor: "#00000021",
                     zIndex: '99',
                 }}>
-                    <img src={require('../loading.gif')} alt="Loading" style={{
+                    <img src={require('../Preloader_2.gif')} alt="Loading" style={{
                         position: "fixed",
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%,-50%)",
-
+                        borderRadius:'100px'
                     }}></img>
                 </div>
-                <div className="Register-Root">
+                <div className="Register-Root"
+                style={{
+                    transition:'0.8s',
+                    filter:'blur('+ this.state.BlurValue +')'
+                }}>
                     <div className="Logo">
                         <div className="panel-Dental">Dental</div>
                         <div className="panel-Stall">Stall</div>
