@@ -19,7 +19,7 @@ class Login extends Component {
         }
         this.handleEmailChange = (event) => {
             this.setState({
-                email: event.target.email
+                email: event.target.value
             })
         }
         this.SubmitHandler = () => {
@@ -27,19 +27,17 @@ class Login extends Component {
                 Loading: 'block',
                 BlurValue:"4px"
             })
-            // axios.post('http://3.87.22.103:2024/signin',{
-            //     email:this.state.email,
-            //     pass:this.state.password
-            // })
-            // .then(response => {
-            //     if(response.data.message === "200: User Authenticated"){
-
-            //     }
-            // })
+            axios.post('http://3.87.22.103:2024/signin',{
+                email:this.state.email,
+                pass:this.state.password
+            })
+            .then(response => {
+                if(response.data.message === "200: User Authenticated"){
+                    this.props.history.push('/')
+                }
+            })
         }
     }
-
-
 
     render() {
         return (
@@ -62,7 +60,6 @@ class Login extends Component {
                 </div>
                 <div className="Register-Root"
                 style={{
-                    transition:'0.8s',
                     filter:'blur('+ this.state.BlurValue +')'
                 }}>
                     <div className="Logo">
