@@ -1,0 +1,101 @@
+@font-face{
+    font-family: 'Ainslie';
+    src: url('../dist/assets/fonts/Ainslie.ttf');
+}
+.Register-Root {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 32px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.2);
+}
+.Logo{
+    display: flex;
+    font-family: 'Ainslie';
+    font-style: italic;
+    font-size: 2.3rem;
+}
+.panel-Dental{
+    color: #4b6679;
+}
+.panel-Stall{
+    color: #40d965;
+}
+.Register-Root>h2, .Register-Root>h5 {
+    color: rgb(151, 151, 151);
+    font-weight: 500;
+    margin-bottom: 0px;
+}
+.Register-Root>h2{
+    font-size: 18px;
+}
+.Register-Root>h5{
+    font-size: 12px;
+    margin-top: 0px;
+}
+
+.form-field {
+    display: flex;
+    width: 320px;
+    flex-direction: column;
+    align-items: center;
+}
+
+.name-input, .email-input, .password-input {
+    font-size: 16px;
+    width: 90%;
+    position: relative;
+    height: 30px;
+    padding: 12px;
+    border: none;
+    outline: none;
+    margin-top: 20px;
+    border-bottom: 2px solid #18c0c9;
+}
+
+.submit-input, .Redirect-input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 100px;
+    outline: none;
+    background-color: #18c0c9;
+    color: white;
+    transition: 0.3s;
+}
+
+.submit-input:hover {
+    background-color: #06888f;
+}
+
+.Redirect-input {
+    background-color: transparent;
+    border: 1px solid rgb(134, 134, 134);
+    color: rgb(134, 134, 134);
+    transition: 0.4s;
+}
+.Redirect-input:hover {
+    background-color: rgb(170, 170, 170);
+    color: white;
+}
+@media(max-width:790px){
+    .Register-Root{
+        box-shadow: 0 0;
+    }
+    .name-input, .email-input, .password-input {
+        width: 78%;
+    }
+    .submit-input{
+        width: 80%;
+    }
+    .Redirect-input {
+        width: 80%;
+    }
+}
