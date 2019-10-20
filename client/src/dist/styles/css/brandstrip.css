@@ -2,6 +2,7 @@
     display: flex;
     flex-wrap: nowrap;
     overflow-x: auto;
+    background-color: #18c0c9;
 }
 
 .brand {
@@ -9,12 +10,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     border-radius: 100px;
     background-color: rgb(255, 255, 255);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    margin: 18px;
+    margin: 32px;
     margin-left: 34px;
     margin-top: 90px;
     margin-right: 34px;
