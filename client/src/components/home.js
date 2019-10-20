@@ -13,7 +13,8 @@ export default class Home extends Component {
                 <SearchBar></SearchBar>
                 <h2 style={{
                     position: 'absolute',
-                    marginLeft: '18px',
+                    left:'50%',
+                    transform:'translate(-50%,0%)',
                     fontFamily: 'Quicksand-Regular',
                     color:'#868686',
                 }}>Top Products</h2>

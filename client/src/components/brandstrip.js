@@ -7,7 +7,8 @@ export default class BrandStrip extends Component {
             <div className="Brand-Container">
                 <h2 style={{
                     position:'absolute',
-                    marginLeft:'18px',
+                    left:'50%',
+                    transform:'translate(-50%,0%)',
                     fontFamily: 'Quicksand-Regular',
                     color:'white'
                 }}>Top Brands</h2>
