@@ -14,11 +14,16 @@ export default class Home extends Component {
                         fontFamily:'Quicksand-Regular',
                         textAlign:'center',
                         margin:'0px',
-                        padding:'18px',
-                        paddingBottom:'50px',
-                        color:'#292929'
+                        padding:'12px',
+                        marginBottom:'50px',
+                        margin:'18px',
+                        color:'white',
+                        backgroundColor:'#18c0c9',
+                        opacity:'0.8'
                     }}>
-                        DentalStall Helps You, To Make People Smile!
+                        <i style={{
+                            fontFamily:'Ainslie'
+                        }}>DentalStall</i> Helps You, To Make People Smile!
                     </h1>
                 </div>
                 <BrandStrip></BrandStrip>
