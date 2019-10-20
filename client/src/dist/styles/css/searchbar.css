@@ -1,0 +1,32 @@
+.SearchBar-Root{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.Searchbar{
+    width:80%;
+    height: 80px;
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    border-bottom: 1px solid rgb(80, 80, 80);
+    outline: none;
+    padding-left:72px;
+    font-size: 21px;
+    font-family: 'Raleway-Light';
+    caret-color: rgb(110, 110, 110);
+    background-image: url('../../assets/icons/icons8-search-60.png');
+    background-repeat: no-repeat;
+    background-size: 40px 40px;
+    background-position: 12px 24px;
+}
+.Search-Icon{
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    margin: 24px;
+    opacity: 0.6;
+    position: absolute;
+}

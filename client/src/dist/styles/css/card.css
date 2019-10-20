@@ -1,0 +1,31 @@
+@font-face{
+    font-family: 'Quicksand-Regular';
+    src: url('../../assets/fonts/Quicksand-Regular.otf');
+}
+.card{
+    width: 200px;
+    height: 260px;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    font-family: 'Quicksand-Regular';
+}
+.card>img{
+    width: inherit;
+}
+.card>h3,.card>h5,.card>div>h5{
+    margin: 5px;
+}
+.container{
+    display: flex;
+}
+.Stock-Status-Span{
+    background-color: #4caf50;
+    color: white;
+    padding: 2px;
+    padding-left: 6px;
+    padding-right: 6px;
+    border-radius: 8px;
+}
