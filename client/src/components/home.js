@@ -8,7 +8,19 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <div className="Poster"></div>
+                <div className="Poster">
+                    <h1 style={{
+                        position:'relative',
+                        fontFamily:'Quicksand-Regular',
+                        textAlign:'center',
+                        margin:'0px',
+                        padding:'18px',
+                        paddingBottom:'50px',
+                        color:'#292929'
+                    }}>
+                        DentalStall Helps You, To Make People Smile!
+                    </h1>
+                </div>
                 <BrandStrip></BrandStrip>
                 <SearchBar></SearchBar>
                 <h2 style={{
