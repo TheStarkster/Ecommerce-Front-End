@@ -9,7 +9,7 @@ export default class BrandStrip extends Component {
                     position:'absolute',
                     marginLeft:'18px',
                     fontFamily: 'Quicksand-Regular',
-                    color:'#3e3e3e'
+                    color:'#868686'
                 }}>Top Brands</h2>
                 <div className="brand">
                     <img src="https://media.dentalkart.com/brands/3M ESPE.jpg" alt="Brand"></img>

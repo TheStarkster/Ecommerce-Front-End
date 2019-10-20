@@ -14,7 +14,7 @@ export default class Home extends Component {
                     position: 'absolute',
                     marginLeft: '18px',
                     fontFamily: 'Quicksand-Regular',
-                    color:'#3e3e3e'
+                    color:'#868686',
                 }}>Top Products</h2>
                 <div className="Home-Root">
                     <Card></Card>

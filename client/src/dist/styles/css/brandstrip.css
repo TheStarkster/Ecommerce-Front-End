@@ -19,3 +19,10 @@
     margin-top: 90px;
     margin-right: 34px;
 }
+
+@media(max-width:768px) {
+    .brand {
+        margin-left: 21px;
+        margin-right: 21px;
+    }
+}
