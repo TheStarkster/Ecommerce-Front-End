@@ -8,6 +8,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
+                <div className="Poster"></div>
                 <BrandStrip></BrandStrip>
                 <SearchBar></SearchBar>
                 <h2 style={{
