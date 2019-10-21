@@ -22,6 +22,33 @@
     background: rgb(90, 87, 87);
 }
 
+.mobile-cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    bottom: 18px;
+    right: 18px;
+    border-radius: 100px;
+    background-color: #18c0c9;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
+}
+.mobile-cart-noti{
+    position: absolute;
+    top:-8px;
+    right:-8px;
+    padding: 4px;
+    padding-left: 9px;
+    padding-right: 9px;
+    border-radius: 100px;
+    background-color: #4caf50;
+    color: white;
+}
+.mobile-cart>img {
+    width: 30px;
+    padding: 16px;
+}
+
 .Poster {
     display: flex;
     align-items: flex-end;

@@ -35,6 +35,10 @@ export default class Home extends Component {
                     <Card></Card>
                     <Card></Card>
                 </div>
+                <div className="mobile-cart">
+                    <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
+                    <div className="mobile-cart-noti">0</div>
+                </div>
             </div>
 
         )
