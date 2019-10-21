@@ -8,12 +8,16 @@ export default class Navbar extends Component {
             window.addEventListener("scroll", function (event) {
                 var scroll = this.scrollY;
                 if (scroll > 40) {
-                    this.document.getElementById('Navbar-Root').style.backgroundColor = 'white'
+                    this.document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
                     this.document.getElementById('nav-item-dentalstall').style.fontSize = '26px'
+                    this.document.getElementById('nav-dental').style.color = 'white'
+                    this.document.getElementById('nav-stall').style.color = 'white'
                 }
                 if (scroll < 40) {
                     this.document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
                     this.document.getElementById('nav-item-dentalstall').style.fontSize = '38px'
+                    this.document.getElementById('nav-dental').style.color = '#4b6679'
+                    this.document.getElementById('nav-stall').style.color = '#40d965'
                 }
             })
         }
@@ -25,10 +29,10 @@ export default class Navbar extends Component {
                     <ul>
                         <li>
                             <div className="nav-item-dentalstall" id="nav-item-dentalstall">
-                                <div className="nav-dental">
+                                <div className="nav-dental" id="nav-dental">
                                     Dental
                                 </div>
-                                <div className="nav-stall">
+                                <div className="nav-stall" id="nav-stall">
                                     Stall
                                 </div>
                             </div>
