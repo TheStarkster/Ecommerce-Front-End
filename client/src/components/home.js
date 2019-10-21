@@ -9,26 +9,10 @@ export default class Home extends Component {
         return (
             <div>
                 <div className="Poster">
-                    <h1 style={{
-                        position: 'relative',
-                        textAlign: 'center',
-                        fontWeight: '400',
-                        margin: '0px',
-                        padding: '12px',
-                        fontSize: '22px',
-                        marginBottom: '50px',
-                        margin: '18px',
-                        color: '#3a3a3abf',
-                        // backgroundColor:'#18c0c9',
-                        opacity: '0.8'
-                    }}>
-                        <i style={{
-                            fontFamily: 'Ainslie',
-                            fontSize: '32px',
-                            color: '#3a3a3a',
-                        }}>DentalStall</i><br /> Helps You, To Make People Smile!
+                    <h1>
+                        <i>DentalStall</i><br /> Helps You, To Make People Smile!
                     </h1>
-                </div>
+                 </div>
                 <BrandStrip></BrandStrip>
                 <SearchBar></SearchBar>
                 <h2 style={{
