@@ -1,0 +1,59 @@
+.Navbar-Root {
+    position: fixed;
+    width: 100%;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: 0.2s;
+}
+
+.nav-item-dentalstall {
+    flex: 1;
+    display: flex;
+    font-family: 'Ainslie';
+    font-style: italic;
+    font-size: 38px;
+    transition: 0.2s;
+}
+
+.nav-dental {
+    color: #4b6679;
+}
+
+.nav-stall {
+    color: #40d965;
+}
+
+.nav-items-root {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.nav-items-root>ul {
+    flex: 1;
+    list-style-type: none;
+    padding-left: 24px;
+}
+
+.nav-items-root>ul>li {
+    display: inline-block;
+}
+
+.nav-menu-icon {
+    width: 25px;
+    margin-right: 15px;
+    /* background-color: #efefef; */
+    padding: 8px;
+    border-radius: 5px;
+}
+
+@media(min-width:300px) and (max-width:768px) {
+    .li-desktop {
+        display: none !important;
+    }
+}

@@ -25,29 +25,169 @@
 .Poster {
     display: flex;
     align-items: flex-end;
+    justify-content: center;
     width: 100%;
-    height: 600px;
+    height: 700px;
     background-color: #c9eafb;
     /* background-color: #1c5572; */
     background-image: url('../../assets/images/DentalstallPoster.png');
     background-repeat: no-repeat;
-    background-size: 768px 432px;
-    background-position: -24px 40px;
+    background-size: 385px 385px;
+    background-position: center;
 }
 
 .Poster>h1 {
-    position: 'relative';
     text-align: center;
     font-weight: 400;
-    padding: 12px;
-    font-weight: '22px';
-    margin-bottom: '50px';
-    margin: 18px;
+    font-size: 18px;
     color: #3a3a3abf;
+    margin-bottom: 50px;
 }
 
 .Poster>h1>i {
     font-family: 'Ainslie';
     font-size: 36px;
     color: #3a3a3a;
+}
+
+@media (min-width:425px) and (max-width:768px) {
+    .Poster {
+        background-size: 449px 449px;
+        /* background-color: black; */
+    }
+    .Poster>h1 {
+        font-size: 24px;
+        margin-bottom: 30px;
+    }
+    .Poster>h1>i {
+        font-size: 42px;
+    }
+}
+
+@media (min-width:768px) and (max-width:1024px) {
+    .Poster {
+        background-size: 449px 449px;
+        /* background-color: green; */
+        background-position: left;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .Poster>h1 {
+        font-size: 26px;
+        margin-right: 38px;
+        text-align: left;
+    }
+    .Poster>h1>i {
+        font-size: 48px;
+    }
+}
+
+@media (min-width:820px) and (max-width:888px) {
+    .Poster {
+        background-size: 500px 500px;
+        /* background-color: green; */
+        background-position: 9% center;
+    }
+    .Poster>h1 {
+        margin-right: 32px;
+    }
+}
+
+@media (min-width:888px) and (max-width:1024px) {
+    .Poster {
+        background-size: 520px 520px;
+        background-position: 9% center;
+    }
+    .Poster>h1 {
+        font-size: 28px;
+        margin-right: 28px;
+    }
+    .Poster>h1>i {
+        font-size: 48px;
+    }
+}
+
+@media (min-width:1024px) and (max-width:1123px) {
+    .Poster {
+        background-size: 659px 659px;
+        background-position: left 20px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .Poster>h1 {
+        font-size: 32px;
+        margin-right: 38px;
+        text-align: left;
+    }
+    .Poster>h1>i {
+        font-size: 52px;
+    }
+}
+
+@media (min-width:1123px) and (max-width:1179px) {
+    .Poster {
+        background-size: 659px 659px;
+        background-position: left 20px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .Poster>h1 {
+        font-size: 38px;
+        margin-right: 38px;
+        text-align: left;
+    }
+    .Poster>h1>i {
+        font-size: 58px;
+    }
+}
+
+@media (min-width:1179px) and (max-width:1240px) {
+    .Poster {
+        background-size: 700px 700px;
+        background-position: 40px 20px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .Poster>h1 {
+        font-size: 38px;
+        margin-right: 38px;
+        text-align: left;
+    }
+    .Poster>h1>i {
+        font-size: 58px;
+    }
+}
+
+@media (min-width:1240px) and (max-width:1357px) {
+    .Poster {
+        background-size: 700px 700px;
+        background-position: 100px 20px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .Poster>h1 {
+        font-size: 38px;
+        margin-right: 38px;
+        text-align: left;
+    }
+    .Poster>h1>i {
+        font-size: 58px;
+    }
+}
+
+@media (min-width:1357px) and (max-width:1660px) {
+    .Poster {
+        background-size: 750px 750px;
+        background-position: 120px -10px;
+        align-items: center;
+        justify-content: flex-end;
+    }
+    .Poster>h1 {
+        font-size: 38px;
+        margin-right: 98px;
+        text-align: left;
+    }
+    .Poster>h1>i {
+        font-size: 58px;
+    }
 }

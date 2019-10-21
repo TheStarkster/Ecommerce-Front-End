@@ -2,17 +2,23 @@ import React, { Component } from 'react'
 import Card from './card'
 import BrandStrip from './brandstrip'
 import SearchBar from './searchbar'
+import Navbar from './navbar'
 import '../dist/styles/css/home.css'
 
 export default class Home extends Component {
     render() {
         return (
             <div>
+                <Navbar></Navbar>
                 <div className="Poster">
-                    <h1>
-                        <i>DentalStall</i><br /> Helps You, To Make People Smile!
+                    <h1 style={{
+                        backgroundColor:'#18c0c961',
+                        fontFamily:'Quicksand-Regular'
+                    }}>
+                        Welcome To <br /><i>DentalStall</i><br />
+                        Your Solgan Goes Here!<br />
                     </h1>
-                 </div>
+                </div>
                 <BrandStrip></BrandStrip>
                 <SearchBar></SearchBar>
                 <h2 style={{
