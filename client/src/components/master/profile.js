@@ -27,6 +27,7 @@ class Profile extends Component {
         switch (this.state.OptionExpanded) {
             case 'Personal': return (
                 <div className="Option-Expand-Root">
+                    <h2>Profile</h2>
                     <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{ filter: 'brightness(0) invert(1)', padding: '16px', width: '40px' }} alt="close" onClick={() => this.ColapseOption()} />
                     <ProfileAccount></ProfileAccount>
                 </div>

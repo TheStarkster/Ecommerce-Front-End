@@ -92,6 +92,14 @@
     height: 100%;
     overflow-y: scroll;
 }
+.Option-Expand-Root>h2{
+    position: absolute;
+    left:50%;
+    transform: translate(-50%,0%);
+    font-family: 'Quicksand-Regular';
+    font-size: 21px;
+    color: white;
+}
 
 @media(max-width:768px) {
     .Option-Card {
