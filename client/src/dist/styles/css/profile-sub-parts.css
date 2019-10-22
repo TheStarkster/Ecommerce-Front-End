@@ -1,4 +1,4 @@
-.Profile-Account-Root {
+.Profile-Sub-Parts-Root {
     display: flex;
     flex-direction: column;
     padding: 35px;
@@ -6,7 +6,7 @@
     align-items: center;
 }
 
-.Profile-Account-Root>input {
+.Profile-Sub-Parts-Root>input {
     border: none;
     height: 35px;
     padding-left: 12px;
@@ -18,7 +18,7 @@
     width: 80%;
 }
 
-.Profile-Account-Root>input::placeholder {
+.Profile-Sub-Parts-Root>input::placeholder {
     color: white;
 }
 
@@ -62,4 +62,16 @@
     font-size: 14px;
     color: white;
     font-family: 'Quicksand-Regular';
+}
+.Error-Msg>h2{
+    text-align: center;
+    font-size: 28px;
+    color: white;
+    font-family: 'Quicksand-Regular';
+}
+.Error-Msg{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 }

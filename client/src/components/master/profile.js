@@ -1,7 +1,12 @@
 import React, { Component } from 'react'
 import '../../dist/styles/css/profile.css'
 import ProfileAccount from '../profile-account'
+import ProfileOrders from '../profile-orders'
+import ProfileNotification from '../profile-notification'
+import ProfileSettings from '../profile-settings'
+import ProfileWishlist from '../profile-wishlist'
 import Navbar from '../navbar'
+import ProfilePayments from '../profile-payments'
 
 class Profile extends Component {
     constructor(props) {
@@ -34,32 +39,37 @@ class Profile extends Component {
             )
             case 'Orders': return (
                 <div className="Option-Expand-Root">
+                    <h2>Orders</h2>
                     <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{ filter: 'brightness(0) invert(1)', padding: '16px', width: '40px' }} alt="close" onClick={() => this.ColapseOption()} />
-                    <ProfileAccount></ProfileAccount>
+                    <ProfileOrders></ProfileOrders>
                 </div>
             )
             case 'Payments': return (
                 <div className="Option-Expand-Root">
+                    <h2>Payments</h2>
                     <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{ filter: 'brightness(0) invert(1)', padding: '16px', width: '40px' }} alt="close" onClick={() => this.ColapseOption()} />
-                    <ProfileAccount></ProfileAccount>
+                    <ProfilePayments></ProfilePayments>
                 </div>
             )
             case 'Wishlist': return (
                 <div className="Option-Expand-Root">
+                    <h2>Wishlist</h2>
                     <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{ filter: 'brightness(0) invert(1)', padding: '16px', width: '40px' }} alt="close" onClick={() => this.ColapseOption()} />
-                    <ProfileAccount></ProfileAccount>
+                    <ProfileWishlist></ProfileWishlist>
                 </div>
             )
             case 'Notification': return (
                 <div className="Option-Expand-Root">
+                    <h2>Notifications</h2>
                     <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{ filter: 'brightness(0) invert(1)', padding: '16px', width: '40px' }} alt="close" onClick={() => this.ColapseOption()} />
-                    <ProfileAccount></ProfileAccount>
+                    <ProfileNotification></ProfileNotification>
                 </div>
             )
             case 'Settings': return (
                 <div className="Option-Expand-Root">
+                    <h2>Settings</h2>
                     <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{ filter: 'brightness(0) invert(1)', padding: '16px', width: '40px' }} alt="close" onClick={() => this.ColapseOption()} />
-                    <ProfileAccount></ProfileAccount>
+                    <ProfileSettings></ProfileSettings>
                 </div>
             )
             default: return null
@@ -98,23 +108,23 @@ class Profile extends Component {
                         <img src={require('../../dist/assets/icons/icons8-user-64.png')} alt="Option" />
                         Personal Settings
                     </div>
-                    <div className="Option-Card" id="Orders">
+                    <div className="Option-Card" id="Orders" onClick={this.ExpandOption}>
                         <img src={require('../../dist/assets/icons/icons8-purchase-order-96.png')} alt="Option" />
                         Your Orders
                     </div>
-                    <div className="Option-Card" id="Payments">
+                    <div className="Option-Card" id="Payments" onClick={this.ExpandOption}>
                         <img src={require('../../dist/assets/icons/icons8-wallet-96.png')} alt="Option" />
                         Payments
                     </div>
-                    <div className="Option-Card" id="Whislist">
+                    <div className="Option-Card" id="Wishlist" onClick={this.ExpandOption}>
                         <img src={require('../../dist/assets/icons/icons8-wish-list-96.png')} alt="Option" />
                         Wishlist
                     </div>
-                    <div className="Option-Card" id="Notification">
+                    <div className="Option-Card" id="Notification" onClick={this.ExpandOption}>
                         <img src={require('../../dist/assets/icons/icons8-notification-96.png')} alt="Option" />
                         Notifications
                     </div>
-                    <div className="Option-Card" id="Settings">
+                    <div className="Option-Card" id="Settings" onClick={this.ExpandOption}>
                         <img src={require('../../dist/assets/icons/icons8-settings-96.png')} alt="Option" />
                         Settings
                     </div>

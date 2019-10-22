@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import '../dist/styles/css/profile-account.css'
+import '../dist/styles/css/profile-sub-parts.css'
 
 export default class ProfileAccount extends Component {
     render() {
         return (
-            <div className="Profile-Account-Root">
+            <div className="Profile-Sub-Parts-Root">
                 <div className="input-catagory">
                     General
                     <div className="hr"></div>
@@ -62,7 +62,7 @@ export default class ProfileAccount extends Component {
                                 Street
                             </li>
                             <li>
-                                Postal Codesdfsdfsdfsfsfsdfsfsf
+                                Postal Code
                             </li>
                         </ul>
                     </div>
