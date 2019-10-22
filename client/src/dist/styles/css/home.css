@@ -1,6 +1,7 @@
 .Home-Root {
     margin-top: 80px;
     display: flex;
+    display: -webkit-flex;
     flex-direction: row;
     flex-wrap: wrap;
 }
@@ -24,6 +25,7 @@
 
 .mobile-cart {
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
     align-items: center;
     position: fixed;
@@ -33,10 +35,11 @@
     background-color: #18c0c9;
     box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
 }
-.mobile-cart-noti{
+
+.mobile-cart-noti {
     position: absolute;
-    top:-8px;
-    right:-8px;
+    top: -8px;
+    right: -8px;
     padding: 4px;
     padding-left: 9px;
     padding-right: 9px;
@@ -44,6 +47,7 @@
     background-color: #4caf50;
     color: white;
 }
+
 .mobile-cart>img {
     width: 30px;
     padding: 16px;
@@ -51,6 +55,7 @@
 
 .Poster {
     display: flex;
+    display: -webkit-flex;
     align-items: flex-end;
     justify-content: center;
     width: 100%;

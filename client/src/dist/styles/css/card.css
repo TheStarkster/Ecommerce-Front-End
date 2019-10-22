@@ -8,6 +8,7 @@
     height: 260px;
     background-color: transparent;
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     align-items: center;
     flex: 1;
@@ -24,6 +25,7 @@
 
 .container {
     display: flex;
+    display: -webkit-flex;
 }
 
 .Stock-Status-Span {
