@@ -4,9 +4,13 @@ import '../dist/styles/css/navbar.css'
 export default class Navbar extends Component {
     constructor(props) {
         super(props)
+        this.state = {
+            navbarExpanded: false
+        }
+        var scroll = 0
         this.componentDidMount = () => {
             window.addEventListener("scroll", function (event) {
-                var scroll = this.scrollY;
+                scroll = this.scrollY;
                 if (scroll > 40) {
                     this.document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
                     this.document.getElementById('nav-item-dentalstall').style.fontSize = '26px'
@@ -14,12 +18,48 @@ export default class Navbar extends Component {
                     this.document.getElementById('nav-stall').style.color = 'white'
                 }
                 if (scroll < 40) {
-                    this.document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
+                    if (document.getElementById('li-desktop-1').style.display !== 'block') {
+                        this.document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
+                        this.document.getElementById('nav-dental').style.color = '#4b6679'
+                        this.document.getElementById('nav-stall').style.color = '#40d965'
+                    }
                     this.document.getElementById('nav-item-dentalstall').style.fontSize = '38px'
-                    this.document.getElementById('nav-dental').style.color = '#4b6679'
-                    this.document.getElementById('nav-stall').style.color = '#40d965'
                 }
             })
+            this.ExpandNavbar = () => {
+                if (this.state.navbarExpanded) {
+                    if (scroll > 40) {
+                        document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
+                        document.getElementById('Navbar-Root').style.height = '67px'
+                        document.getElementById('li-desktop-1').style.display = 'none'
+                        document.getElementById('li-desktop-2').style.display = 'none'
+                        document.getElementById('nav-dental').style.color = 'white'
+                        document.getElementById('nav-stall').style.color = 'white'
+                    }
+                    if (scroll < 40) {
+                        document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
+                        document.getElementById('Navbar-Root').style.height = '67px'
+                        document.getElementById('li-desktop-1').style.display = 'none'
+                        document.getElementById('li-desktop-2').style.display = 'none'
+                        document.getElementById('nav-dental').style.color = '#4b6679'
+                        document.getElementById('nav-stall').style.color = '#40d965'
+                    }
+                    this.setState({
+                        navbarExpanded: false
+                    })
+                } else {
+                    document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
+                    document.getElementById('Navbar-Root').style.height = '162px'
+                    document.getElementById('li-desktop-1').style.display = 'block'
+                    document.getElementById('li-desktop-2').style.display = 'block'
+                    document.getElementById('nav-dental').style.color = 'white'
+                    document.getElementById('nav-stall').style.color = 'white'
+                    this.setState({
+                        navbarExpanded: true
+                    })
+                }
+                console.log(this.state.navbarExpanded)
+            }
         }
     }
     render() {
@@ -37,14 +77,14 @@ export default class Navbar extends Component {
                                 </div>
                             </div>
                         </li>
-                        <li className="li-desktop">
+                        <li className="li-desktop" id="li-desktop-1">
                             Account
                         </li>
-                        <li className="li-desktop">
+                        <li className="li-desktop" id="li-desktop-2">
                             Deals
                         </li>
                     </ul>
-                    <img src={require('../dist/assets/icons/icons8-menu-50.png')} alt="Menu" className="nav-menu-icon"></img>
+                    <img src={require('../dist/assets/icons/icons8-menu-50.png')} alt="Menu" className="nav-menu-icon" onClick={() => this.ExpandNavbar()}></img>
                 </div>
             </div>
         )
