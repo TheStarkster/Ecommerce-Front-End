@@ -1,0 +1,77 @@
+.Product-Page-Root {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Quicksand-Regular';
+}
+.Product-Page-Root>button{
+    width: 60%;
+    border: none;
+    height: 45px;
+    margin-top: 12px;
+    border-radius: 8px;
+    outline: none;
+    color: white;
+    background-color: #3d5464;
+    font-size: 14px;
+}
+.product-image {
+    margin-top: 85px;
+    width: 80%;
+}
+
+.Product-Page-Root>div>h3, .Product-Page-Root>div>h5, .Product-Page-Root>div>h4 {
+    font-size: 24px;
+    margin: 0px;
+    width: 100%;
+    margin-bottom: 8px;
+}
+
+.Product-Page-Root>div>h5 {
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.692);
+}
+
+.Product-Page-Root>div>h4 {
+    font-size: 21px;
+}
+
+.margin-12px {
+    margin: 12px
+}
+
+.Product-Detail {
+    margin: 18px;
+}
+
+.Primary-Features {
+    margin: 12px;
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    border: 1.5px solid #6dd470;
+    border-radius: 12px;
+}
+
+.Primary-Features>.h4 {
+    margin: 0px;
+    padding: 8px;
+    border-radius: 4px;
+    font-size: 18px;
+    background-color: rgba(0, 0, 0, 0.089);
+}
+
+.Primary-Features>div>ul {
+    list-style-type: none;
+    margin: 0px;
+    padding-left: 12px;
+    padding-right: 12px;
+}
+
+.Primary-Features>div>ul>li {
+    padding: 4px;
+}
+
+.Primary-Features {
+    padding: 12px;
+}
