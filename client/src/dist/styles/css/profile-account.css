@@ -50,11 +50,13 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    font-size: 12px;
+    margin-bottom: 6px;
 }
 
 .default-address {
     background-color: #4ecad1;
-    padding: 18px;
+    padding: 8px;
     border-radius: 12px;
     display: flex;
     font-size: 14px;

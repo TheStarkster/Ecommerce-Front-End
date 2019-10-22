@@ -25,7 +25,7 @@ export default class ProfileAccount extends Component {
                 </div>
                 <div className="Address-Root">
                     <div className="default-address">
-                        <ul>
+                        <ul style={{opacity:0.8}}>
                             <li>
                                 Name
                             </li>
