@@ -1,12 +1,23 @@
 import React, { Component } from 'react'
 import '../../dist/styles/css/profile.css'
+import ProfileAccount from '../profile-account'
 import Navbar from '../navbar'
 
 class Profile extends Component {
+    constructor(props){
+        super(props)
+        this.state = {
+            ExpandOptionIcon:''
+        }
+    }
     render() {
         return (
             <div className="Profile-Root">
                 <Navbar history={this.props.history}></Navbar>
+                <div className="Option-Expand-Root">
+                    <img src={require('../../dist/assets/icons/icons8-delete-50.png')} style={{filter:'brightness(0) invert(1)',padding:'16px',width:'40px'}} alt="close" />
+                    <ProfileAccount></ProfileAccount>
+                </div>
                 <div className="Avatar">
                     <img src={require('../../dist/assets/icons/user-dp.jpg')} alt="User" />
                     UserName
@@ -29,7 +40,7 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className="Profile-Option-Card">
-                    <div className="Option-Card">
+                    <div className="Option-Card" >
                         <img src={require('../../dist/assets/icons/icons8-user-64.png')} alt="Option" />
                         Personal Settings
                     </div>

@@ -82,6 +82,17 @@
     margin-bottom: 18px;
 }
 
+.Option-Expand-Root{
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: 99999;
+    background-color: #18c0c9;
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+}
+
 @media(max-width:768px) {
     .Option-Card {
         width: 150px;
