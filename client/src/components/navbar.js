@@ -5,7 +5,8 @@ export default class Navbar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            navbarExpanded: false
+            navbarExpanded: false,
+            Loading: 'none',
         }
         var scroll = 0
         this.componentDidMount = () => {
@@ -64,6 +65,15 @@ export default class Navbar extends Component {
     render() {
         return (
             <div className="Navbar-Root" id="Navbar-Root">
+                <img src={require('../dist/assets/animation/Preloader.gif')} alt="Loading" style={{
+                    position: "fixed",
+                    display: this.state.Loading,
+                    top: "50%",
+                    left: "50%",
+                    width: '50px',
+                    transform: "translate(-50%,-50%)",
+                    borderRadius: '100px'
+                }}></img>
                 <div className="nav-items-root">
                     <ul>
                         <li>
@@ -76,7 +86,17 @@ export default class Navbar extends Component {
                                 </div>
                             </div>
                         </li>
-                        <li className="li-desktop" id="li-desktop-1" onClick={() => this.props.history.push('/profile')}>
+                        <li className="li-desktop" id="li-desktop-1" onClick={() => {
+                            if (this.props.history.location.pathname !== '/profile') {
+                                this.setState({
+                                    Loading: 'block'
+                                }, () => {
+                                    setTimeout(() => {
+                                        this.props.history.push('/profile')
+                                    }, 2000)
+                                })
+                            }
+                        }}>
                             Account
                         </li>
                         <li className="li-desktop" id="li-desktop-2">

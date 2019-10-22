@@ -50,7 +50,7 @@ class Login extends Component {
                     backgroundColor: "#00000021",
                     zIndex: '99',
                 }}>
-                    <img src={require('../Preloader_2.gif')} alt="Loading" style={{
+                    <img src={require('../Preloader.gif')} alt="Loading" style={{
                         position: "fixed",
                         top: "50%",
                         left: "50%",
