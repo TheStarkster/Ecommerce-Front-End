@@ -9,7 +9,7 @@ export default class Home extends Component {
     render() {
         return (
             <div>
-                <Navbar></Navbar>
+                <Navbar history={this.props.history}></Navbar>
                 <div className="Poster">
                     <h1 style={{
                         backgroundColor:'#18c0c961',

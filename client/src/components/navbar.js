@@ -58,7 +58,6 @@ export default class Navbar extends Component {
                         navbarExpanded: true
                     })
                 }
-                console.log(this.state.navbarExpanded)
             }
         }
     }
@@ -77,7 +76,7 @@ export default class Navbar extends Component {
                                 </div>
                             </div>
                         </li>
-                        <li className="li-desktop" id="li-desktop-1">
+                        <li className="li-desktop" id="li-desktop-1" onClick={() => this.props.history.push('/profile')}>
                             Account
                         </li>
                         <li className="li-desktop" id="li-desktop-2">

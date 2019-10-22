@@ -1,0 +1,90 @@
+.Profile-Root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Avatar {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 86px;
+    font-family: 'Quicksand-Regular';
+    font-size: 21px;
+}
+
+.Avatar>img {
+    width: 120px;
+    border-radius: 100px;
+    margin-bottom: 18px;
+}
+
+.Credits-Root {
+    padding: 12px;
+    padding-left: 38px;
+    padding-right: 38px;
+    border-radius: 100px;
+    font-family: 'Quicksand-Regular';
+    font-size: 16px;
+    color: white;
+    background-color: #ff4d14;
+    margin-top: 18px;
+    box-shadow: 0 8px 15px #ff4f14be;
+}
+
+.Sub-Details {
+    margin-top: 45px;
+    font-family: 'Quicksand-Regular';
+    font-size: 12px;
+    opacity: 0.6;
+}
+
+.Sub-Details>div>img {
+    width: 18px;
+    margin-right: 12px;
+}
+
+.Sub-Details>div {
+    display: flex;
+    display: -webkit-flex;
+    margin-top: 6px;
+}
+
+.Profile-Option-Card {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+.Option-Card {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 200px;
+    height: 260px;
+    background-color: #e2e2e2;
+    margin: 2px;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Quicksand-Regular';
+    border-radius: 5px;
+}
+
+.Option-Card>img {
+    filter: opacity(0.6);
+    width: 42px;
+    margin-bottom: 18px;
+}
+
+@media(max-width:768px) {
+    .Option-Card {
+        width: 150px;
+        height: 150px;
+    }
+}
