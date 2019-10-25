@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import '../dist/styles/css/navbar.css'
+import '../../dist/styles/css/navbar.css'
 
 export default class Navbar extends Component {
     constructor(props) {
@@ -65,7 +65,7 @@ export default class Navbar extends Component {
     render() {
         return (
             <div className="Navbar-Root" id="Navbar-Root">
-                <img src={require('../dist/assets/animation/Preloader.gif')} alt="Loading" style={{
+                <img src={require('../../dist/assets/animation/Preloader.gif')} alt="Loading" style={{
                     position: "fixed",
                     display: this.state.Loading,
                     top: "50%",
@@ -103,7 +103,7 @@ export default class Navbar extends Component {
                             Deals
                         </li>
                     </ul>
-                    <img src={require('../dist/assets/icons/icons8-menu-50.png')} alt="Menu" className="nav-menu-icon" onClick={() => this.ExpandNavbar()}></img>
+                    <img src={require('../../dist/assets/icons/icons8-menu-50.png')} alt="Menu" className="nav-menu-icon" onClick={() => this.ExpandNavbar()}></img>
                 </div>
             </div>
         )

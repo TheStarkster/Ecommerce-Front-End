@@ -4,7 +4,24 @@ import '../dist/styles/css/card.css'
 export default class Card extends Component {
     render() {
         return (
-            <div className="card">
+            <div className="card" onClick={() => {
+                this.props.history.push({
+                    pathname:'/product',
+                    state:{
+                        data:{
+                            ProductBrand:this.props.ProductBrand,
+                            ProductDescription:this.props.ProductDescription,
+                            ProductImage:this.props.ProductImage,
+                            ProductKeyFeatures:this.props.ProductKeyFeatures,
+                            ProductMrp:this.props.ProductMrp,
+                            ProductName:this.props.ProductName,
+                            ProductPrice:this.props.ProductPrice,
+                            ProductPrimaryFeatures:this.props.ProductPrimaryFeatures,
+                            ProductRDL:this.props.ProductRDL
+                        }
+                    }
+                })
+            }}>
                 <img src={this.props.ProductImage} alt="Product"></img>
                 <h3>{this.props.ProductName}</h3>
                 <h5 style={{color:"grey"}}>{this.props.ProductDescription}</h5>

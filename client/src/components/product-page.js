@@ -1,20 +1,30 @@
 import React, { Component } from 'react'
-import Navbar from './navbar'
+import Navbar from './master/navbar'
 import '../dist/styles/css/product-page.css'
 
 export default class ProductPage extends Component {
+    constructor(props) {
+        super(props)
+        console.log(this.props.location)
+    }
     render() {
         return (
             <div>
                 <Navbar history={this.props.history}></Navbar>
                 <div className="Product-Page-Root">
-                    <img src="https://media.dentalkart.com/catalog/product/m/i/micro_mega_one_flare_1.jpg" alt="Product" className="product-image"></img>
+                    <img src={this.props.location.state.data.ProductImage} alt="Product" className="product-image"></img>
+                    By {this.props.location.state.data.ProductBrand}
                     <div className="Product-Detail">
-                        <h3>Micro Mega One Flare is Product Name</h3>
-                        <h5>Description</h5>
-                        <h4>Price</h4>
+                        <h3>{this.props.location.state.data.ProductName}</h3>
+                        <h5>{this.props.location.state.data.ProductDescription}</h5>
+                        <div className="small-container">
+                            <h4>Rs.{this.props.location.state.data.ProductPrice}</h4>
+                            <span className="Stock-Status-Span-Product">In Stock</span>
+                        </div>
+                        <div className="mrp-container">
+                            <s>MRP: Rs.{this.props.location.state.data.ProductMrp}</s>
+                        </div>
                     </div>
-                    <span className="Stock-Status-Span">Stock Status</span>
                     <button>Buy Now</button>
                     <button>Add To Cart</button>
                     <button>Add To Wishlist</button>
@@ -38,10 +48,6 @@ export default class ProductPage extends Component {
                             </ul>
                         </div>
                     </div>
-                    <p>This is Sample Brief Text
-                    his is Sample Brief Text
-                    his is Sample Brief Text
-                    </p>
                 </div>
                 <div className="mobile-cart">
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>

@@ -5,7 +5,7 @@ import ProfileOrders from '../profile-orders'
 import ProfileNotification from '../profile-notification'
 import ProfileSettings from '../profile-settings'
 import ProfileWishlist from '../profile-wishlist'
-import Navbar from '../navbar'
+import Navbar from './navbar'
 import ProfilePayments from '../profile-payments'
 
 class Profile extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Card from './card'
 import BrandStrip from './brandstrip'
 import SearchBar from './searchbar'
-import Navbar from './navbar'
+import Navbar from './master/navbar'
 import '../dist/styles/css/home.css'
 import axios from 'axios'
 
@@ -34,6 +34,7 @@ export default class Home extends Component {
                     ProductImage={element.image}
                     ProductMrp={element.mrp}
                     ProductRDL={element.rdl}
+                    history={this.props.history}
                     key={element._id}
                 >
                 </Card>
