@@ -17,10 +17,16 @@
 
 .card>img {
     width: inherit;
+    height: 150px;
 }
 
 .card>h3, .card>h5, .card>div>h5 {
     margin: 5px;
+    width: inherit;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .container {
@@ -28,13 +34,17 @@
     display: -webkit-flex;
 }
 
+.Card-Price {
+    font-size: 16px;
+}
+
 .Stock-Status-Span {
     background-color: #4caf50;
     color: white;
-    padding: 2px;
-    padding-left: 6px;
-    padding-right: 6px;
+    font-size: 12px;
+    padding: 4px;
     border-radius: 8px;
+    margin: auto;
 }
 
 @media(max-width:768px) {
