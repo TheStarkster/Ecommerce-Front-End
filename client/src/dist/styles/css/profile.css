@@ -51,13 +51,12 @@
 .Sub-Details>div {
     display: flex;
     display: -webkit-flex;
-    display: -webkit-flex;
+    align-items: center;
     margin-top: 6px;
 }
 
 .Profile-Option-Card {
     display: flex;
-    display: -webkit-flex;
     display: -webkit-flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -67,7 +66,6 @@
 
 .Option-Card {
     display: flex;
-    display: -webkit-flex;
     display: -webkit-flex;
     flex-direction: column;
     justify-content: center;
