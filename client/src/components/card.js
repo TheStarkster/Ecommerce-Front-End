@@ -17,7 +17,9 @@ export default class Card extends Component {
                             ProductName:this.props.ProductName,
                             ProductPrice:this.props.ProductPrice,
                             ProductPrimaryFeatures:this.props.ProductPrimaryFeatures,
-                            ProductRDL:this.props.ProductRDL
+                            ProductRDL:this.props.ProductRDL,
+                            ProductTags:this.props.ProductTags,
+                            ProductID:this.props.ProductID
                         }
                     }
                 })

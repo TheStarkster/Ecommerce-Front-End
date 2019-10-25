@@ -34,8 +34,9 @@ export default class Home extends Component {
                     ProductImage={element.image}
                     ProductMrp={element.mrp}
                     ProductRDL={element.rdl}
+                    ProductTags={element.tags}
                     history={this.props.history}
-                    key={element._id}
+                    ProductID={element._id}
                 >
                 </Card>
             )

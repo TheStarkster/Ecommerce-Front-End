@@ -1,0 +1,36 @@
+.Rec_Card{
+    display: flex;
+    width: 150px;
+    flex-direction: column;
+    align-items: center;
+}
+.Rec_details>h3,h6{
+    font-size: 14px;
+    margin-top:8px;
+    margin-bottom:2px;
+}
+.Rec_details>h6,.Rec_details>s>h6{
+    font-size: 12px;
+    margin-top:2px;
+}
+.Rec_details>div{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+.Rec_details>div>h6{
+    font-size: 16px;
+    margin:0px;
+}
+.Rec_details>div>span{
+    background-color: rgb(34, 185, 34);
+    color: white;
+    font-size: 12px;
+    margin:0px;
+    margin-left: 8px;
+    border-radius: 8px;
+    padding: 5px;
+}
+.Rec_ProductImage{
+    width: 100px;
+}

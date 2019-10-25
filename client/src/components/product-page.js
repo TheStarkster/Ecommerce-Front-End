@@ -1,12 +1,32 @@
 import React, { Component } from 'react'
 import Navbar from './master/navbar'
 import Recommended from './Recommeded'
+import axios from 'axios'
 import '../dist/styles/css/product-page.css'
 
 export default class ProductPage extends Component {
     constructor(props) {
         super(props)
-        console.log(this.props.location)
+        console.log(this.props.location.state.data)
+        this.state = {
+            SimilarProducts: []
+        }
+        this.componentWillMount = () => {
+            axios.post('http://localhost:2024/similar-product', {
+                tags: this.props.location.state.data.ProductTags
+            })
+                .then(response => {
+                    var i, Temp_SimilarProducts = []
+                    for (i = 0; i < response.data.length; i++) {
+                        if (response.data[i]._id !== this.props.location.state.data.ProductID) {
+                            Temp_SimilarProducts.push(response.data[i])
+                        }
+                    }
+                    this.setState({
+                        SimilarProducts:Temp_SimilarProducts
+                    })
+                })
+        }
     }
     RenderPrimaryFeatures() {
         this.PrimaryFeatureArray = []
@@ -64,7 +84,7 @@ export default class ProductPage extends Component {
                         </div>
                     </div>
                     <div className="recommended-product-container">
-                        <Recommended NumberOfCard={2}></Recommended>
+                        <Recommended Products={this.state.SimilarProducts} NumberOfCard={2}></Recommended>
                     </div>
 
                 </div>
