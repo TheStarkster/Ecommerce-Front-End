@@ -8,7 +8,6 @@ export default (props) => {
     function RenderSimilarProducts() {
         var ProductArray = []
         props.Products.forEach(element => {
-            console.log(element)
             ProductArray.push(
                 <div style={{ height: 185, background: '#fff' }} className="Rec_Card">
                     <img src={element.image} className="Rec_ProductImage" width='120px' alt="Product"></img>

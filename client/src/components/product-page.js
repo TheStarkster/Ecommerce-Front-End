@@ -7,7 +7,6 @@ import '../dist/styles/css/product-page.css'
 export default class ProductPage extends Component {
     constructor(props) {
         super(props)
-        console.log(this.props.location.state.data)
         this.state = {
             SimilarProducts: []
         }
@@ -83,10 +82,10 @@ export default class ProductPage extends Component {
                             <ul>{this.RenderKeyFeatures()}</ul>
                         </div>
                     </div>
+                    <h3>Recommended For You</h3>
                     <div className="recommended-product-container">
                         <Recommended Products={this.state.SimilarProducts} NumberOfCard={2}></Recommended>
                     </div>
-
                 </div>
                 <div className="mobile-cart">
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
