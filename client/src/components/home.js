@@ -13,7 +13,7 @@ export default class Home extends Component {
             ProductsArray: []
         }
         this.componentWillMount = () => {
-            axios.get('http://localhost:2024/User-fetch-products')
+            axios.get('http://3.87.22.103:2024//User-fetch-products')
                 .then(response => {
                     this.setState({
                         ProductsArray: [...response.data.products]
