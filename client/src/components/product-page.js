@@ -12,7 +12,7 @@ export default class ProductPage extends Component {
             SimilarProducts: []
         }
         this.componentWillMount = () => {
-            axios.post('http://localhost:2024/similar-product', {
+            axios.post('http://3.87.22.103:2024/similar-product', {
                 tags: this.props.location.state.data.ProductTags
             })
                 .then(response => {
