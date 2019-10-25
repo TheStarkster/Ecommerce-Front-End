@@ -5,7 +5,14 @@
     flex-direction: column;
     font-family: 'Quicksand-Regular';
 }
-
+.recommended-product-container{
+    width: 100%;
+}
+.recommended-product-container>div{
+    padding: 2px !important;
+    padding-left: 8px !important;
+    padding-right: 8px !important;
+}
 .Product-Page-Root>button {
     width: 60%;
     border: none;

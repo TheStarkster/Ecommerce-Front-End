@@ -1,11 +1,34 @@
 import React, { Component } from 'react'
 import Navbar from './master/navbar'
+import Recommended from './Recommeded'
 import '../dist/styles/css/product-page.css'
 
 export default class ProductPage extends Component {
     constructor(props) {
         super(props)
         console.log(this.props.location)
+    }
+    RenderPrimaryFeatures() {
+        this.PrimaryFeatureArray = []
+        this.props.location.state.data.ProductPrimaryFeatures.forEach(element => {
+            this.PrimaryFeatureArray.push(
+                <li>
+                    {element}
+                </li>
+            )
+        })
+        return this.PrimaryFeatureArray
+    }
+    RenderKeyFeatures() {
+        this.ProductKeyFeatureArray = []
+        this.props.location.state.data.ProductKeyFeatures.forEach(element => {
+            this.ProductKeyFeatureArray.push(
+                <li>
+                    {element}
+                </li>
+            )
+        })
+        return this.ProductKeyFeatureArray
     }
     render() {
         return (
@@ -31,23 +54,19 @@ export default class ProductPage extends Component {
                     <div className="Primary-Features">
                         <div className="h4">Primary Features</div>
                         <div className="Feature-Root">
-                            <ul>
-                                <li>Feature One</li>
-                                <li>Feature Two</li>
-                                <li>Feature Three</li>
-                            </ul>
+                            <ul>{this.RenderPrimaryFeatures()}</ul>
                         </div>
                     </div>
                     <div className="Primary-Features">
                         <div className="h4">Key Features</div>
                         <div className="Feature-Root">
-                            <ul>
-                                <li>Feature One</li>
-                                <li>Feature Two</li>
-                                <li>Feature Three</li>
-                            </ul>
+                            <ul>{this.RenderKeyFeatures()}</ul>
                         </div>
                     </div>
+                    <div className="recommended-product-container">
+                        <Recommended NumberOfCard={2}></Recommended>
+                    </div>
+
                 </div>
                 <div className="mobile-cart">
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
