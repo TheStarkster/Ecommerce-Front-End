@@ -102,6 +102,13 @@
     font-family: 'Quicksand-Regular';
     padding:12px;
     border-radius: 5px;
+    outline: none;
+}
+.Add-Address-Root{
+    opacity: 0;
+}
+.show-add-address{
+    opacity: 1;
 }
 .CheckoutBtn-Container{
     padding:12px;

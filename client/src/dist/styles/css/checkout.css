@@ -1,0 +1,36 @@
+.Checkout-Root{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Quicksand-Regular';
+    padding-left: 24px;
+    top:14%;
+}
+.Order-Detail-Root>ul{
+    list-style-type: none;
+    padding-left: 0px;
+}
+.dark{
+    background-color: rgb(199, 199, 199) !important;
+}
+.Add-Address-Btn{
+    width: 100%;
+    background-color: #f57c00;
+    color: white;
+    font-family: 'Quicksand-Regular';
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+}
+.Save-Address-Btn{
+    width: 90%;
+    background-color: #2d8d92;
+    color: white;
+    font-family: 'Quicksand-Regular';
+    font-size: 14px;
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    margin: 18px;
+}

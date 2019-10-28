@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import FourOFour from '../404'
+// import FourOFour from '../404'
 import Login from '../auth/login/login'
 import Register from '../auth/register/register'
 import Home from '../components/home'
 import Profile from '../components/master/profile'
 import Cart from '../components/master/context/cart'
 import ProductPage from '../components/product-page'
+import Checkout from '../components/checkout'
 class Paths extends Component {
     render() {
         return (
@@ -22,6 +23,7 @@ class Paths extends Component {
                     <Cart>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/product" component={ProductPage} />
+                        <Route exact path="/checkout" component={Checkout} />
                     </Cart>
                 </Switch>
             </div>
