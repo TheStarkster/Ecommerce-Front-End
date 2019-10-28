@@ -4,13 +4,19 @@ import BrandStrip from './brandstrip'
 import SearchBar from './searchbar'
 import Navbar from './master/navbar'
 import '../dist/styles/css/home.css'
+import { CartContext } from './master/context/cart'
 import axios from 'axios'
 
 export default class Home extends Component {
+    static contextType = CartContext
     constructor(props) {
         super(props)
         this.state = {
             ProductsArray: []
+        }
+        this.componentDidMount = () => {
+            var cart = JSON.parse(localStorage.getItem('cart'))
+            document.getElementById('mobile-cart-noti').innerText = cart.length
         }
         this.componentWillMount = () => {
             axios.get('http://3.87.22.103:2024/User-fetch-products')
@@ -45,7 +51,7 @@ export default class Home extends Component {
     }
     render() {
         return (
-            <div >
+            <div>
                 <Navbar history={this.props.history}></Navbar>
                 <div className="Poster">
                     <h1 style={{
@@ -70,7 +76,7 @@ export default class Home extends Component {
                 </div>
                 <div className="mobile-cart">
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
-                    <div className="mobile-cart-noti">0</div>
+                    <div className="mobile-cart-noti" id="mobile-cart-noti">0</div>
                 </div>
             </div>
         )

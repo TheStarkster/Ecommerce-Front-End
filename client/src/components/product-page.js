@@ -2,9 +2,12 @@ import React, { Component } from 'react'
 import Navbar from './master/navbar'
 import Recommended from './Recommeded'
 import axios from 'axios'
+import { CartContext } from './master/context/cart'
 import '../dist/styles/css/product-page.css'
+import Product from '../components/master/partials/product'
 
 export default class ProductPage extends Component {
+    static contextType = CartContext
     constructor(props) {
         super(props)
         this.state = {
@@ -22,7 +25,7 @@ export default class ProductPage extends Component {
                         }
                     }
                     this.setState({
-                        SimilarProducts:Temp_SimilarProducts
+                        SimilarProducts: Temp_SimilarProducts
                     })
                 })
         }
@@ -38,6 +41,15 @@ export default class ProductPage extends Component {
         })
         return this.PrimaryFeatureArray
     }
+    Update_Cart() {
+        const { UpdateCart } = this.context
+        UpdateCart({
+            ProductID: this.props.location.state.data.ProductID,
+            ProductName: this.props.location.state.data.ProductName,
+            ProductImage: this.props.location.state.data.ProductImage,
+            ProductPrice: this.props.location.state.data.ProductPrice
+        })
+    }
     RenderKeyFeatures() {
         this.ProductKeyFeatureArray = []
         this.props.location.state.data.ProductKeyFeatures.forEach(element => {
@@ -50,6 +62,8 @@ export default class ProductPage extends Component {
         return this.ProductKeyFeatureArray
     }
     render() {
+        const { CartItems } = this.context
+        console.log(CartItems)
         return (
             <div>
                 <Navbar history={this.props.history}></Navbar>
@@ -68,7 +82,14 @@ export default class ProductPage extends Component {
                         </div>
                     </div>
                     <button>Buy Now</button>
-                    <button>Add To Cart</button>
+                    <button onClick={() => {
+                        this.Update_Cart()
+                        // var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
+                        // addClass(PartialProductRoot,'Show-Partial-Product-Root')
+                        // setTimeout((params) => {
+                        //     removeClass(PartialProductRoot,'Show-Partial-Product-Root')
+                        // },2000)
+                    }}>Add To Cart</button>
                     <button>Add To Wishlist</button>
                     <div className="Primary-Features">
                         <div className="h4">Primary Features</div>
@@ -89,8 +110,9 @@ export default class ProductPage extends Component {
                 </div>
                 <div className="mobile-cart">
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
-                    <div className="mobile-cart-noti">0</div>
+                    <div className="mobile-cart-noti">{CartItems.length}</div>
                 </div>
+                <Product message="Product Added to Cart!"></Product>
             </div>
         )
     }
