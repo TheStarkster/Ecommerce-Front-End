@@ -8,9 +8,6 @@ export default class Cart extends Component {
         this.state = {
             CartItems: []
         }
-        this.UpdateCartCount = () => {
-            document.getElementById('mobile-cart-noti').innerText = this.state.CartItems.length
-        }
         this.componentWillMount = () => {
             axios.post('http://localhost:2024/user/get-cart', {
                 id: '5da1171317addb2490371c6a'
@@ -60,7 +57,7 @@ export default class Cart extends Component {
 
     render() {
         return (
-            <CartContext.Provider value={{ ...this.state, UpdateCart: this.UpdateCart ,UpdateCartCount:this.UpdateCartCount}}>
+            <CartContext.Provider value={{ ...this.state, UpdateCart: this.UpdateCart }}>
                 {this.props.children}
             </CartContext.Provider>
         )

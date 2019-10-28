@@ -16,12 +16,13 @@ class Paths extends Component {
                     <Route exact path="/SignIn" component={Login} />
                     <Route exact path="/Register" component={Register} />
                     <Route exact path="/SignUp" component={Register} />
+                    <Route exact path="/profile" component={Profile} />
+                </Switch>
+                <Switch>
                     <Cart>
                         <Route exact path="/" component={Home} />
                         <Route exact path="/product" component={ProductPage} />
                     </Cart>
-                    <Route exact path="/profile" component={Profile} />
-                    <Route path="*" component={FourOFour} />
                 </Switch>
             </div>
         )
