@@ -21,7 +21,7 @@ export default class Checkout extends Component {
                         return total
                     }
                     this.RequestOrder = () => {
-                        Axios.post('http://3.87.22.103:2024/api/razorpay/create-order', { amount: 50 * 100, receipt: "gurkaran_order_54654" })
+                        Axios.post('http://3.87.22.103:2024/api/razorpay/create-order', { amount: parseFloat(this.CalculateSubtotal(CartItems)) * 100, receipt: "gurkaran_order_54654" })
                             .then(response => {
                                 this.setState({
                                     orderID: response.data.id
@@ -128,6 +128,20 @@ export default class Checkout extends Component {
                                         {this.RenderCartItems()}
                                     </ul>
                                 </div>
+                                <div className="cart-total-container bg-green">
+                                    <div className="row">
+                                        <h6>Sub-Total</h6>
+                                        <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
+                                    </div>
+                                    <div className="row">
+                                        <h6>Taxes</h6>
+                                        <h4>Rs.0</h4>
+                                    </div>
+                                    <div className="row">
+                                        <h6>Grand-Total</h6>
+                                        <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
+                                    </div>
+                                </div>
                                 <div className="Order-Shipping-Root">
                                     <h4>SHIPPING DETAILS</h4>
                                     <div className="hr dark"></div>
@@ -156,7 +170,7 @@ export default class Checkout extends Component {
                                 <div className="Order-Payment-Root">
                                     <h4>PAYMENTS</h4>
                                     <div className="hr dark"></div>
-                                    <button className="Payment-Btn" onClick={() => {this.RequestOrder()}}>Pay Now</button>
+                                    <button className="Payment-Btn" onClick={() => { this.RequestOrder() }}>Pay Now</button>
                                 </div>
                             </div>
                         </div>

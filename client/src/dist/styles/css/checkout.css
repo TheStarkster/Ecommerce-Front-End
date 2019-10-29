@@ -19,6 +19,11 @@
     list-style-type: none;
     padding-left: 0px;
 }
+.bg-green{
+    background-color: #18c0c926;
+    padding-bottom: 18px;
+    border-radius: 5px;
+}
 .Add-Address-Btn{
     width: 100%;
     background-color: #f57c00;
