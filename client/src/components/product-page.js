@@ -63,7 +63,6 @@ export default class ProductPage extends Component {
     }
     render() {
         const { CartItems } = this.context
-        console.log(CartItems)
         return (
             <div>
                 <Navbar history={this.props.history}></Navbar>
@@ -110,7 +109,7 @@ export default class ProductPage extends Component {
                 </div>
                 <div className="mobile-cart">
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
-                    <div className="mobile-cart-noti">{CartItems.length}</div>
+                    <div className="mobile-cart-noti">{CartItems !== undefined ? CartItems.length : 0}</div>
                 </div>
                 <Product message="Product Added to Cart!"></Product>
             </div>

@@ -1,5 +1,6 @@
 import React, { Component, createContext } from 'react'
 import axios from 'axios'
+import { removeClass, addClass } from '../../../functions/functions'
 
 export const CartContext = createContext()
 export default class Cart extends Component {
@@ -21,7 +22,8 @@ export default class Cart extends Component {
                 })
         }
         this.UpdateCart = (Product) => {
-            if (this.state.CartItems.length === 0) {
+            if (this.state.CartItems === undefined) {
+                this.state.CartItems = []
                 this.state.CartItems.push(Product)
                 this.setState({
                     CartItems: this.state.CartItems
@@ -33,6 +35,11 @@ export default class Cart extends Component {
                     })
                         .then(() => {
                             localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
+                            var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
+                            addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                            setTimeout((params) => {
+                                removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                            }, 2000)
                         })
                 })
             } else {
@@ -48,6 +55,11 @@ export default class Cart extends Component {
                         })
                             .then(() => {
                                 localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
+                                var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
+                                addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                                setTimeout((params) => {
+                                    removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                                }, 2000)
                             })
                     })
                 }

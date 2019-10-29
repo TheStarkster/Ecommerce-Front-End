@@ -11,11 +11,15 @@
     align-content: center;
     justify-content: center;
     width: 240px;
-    background-color: rgb(82, 184, 82);
     color: white;
     border-radius: 8px;
     transition: 0.2s cubic-bezier(0, 0.51, 0.58, 1);
 }
-.Show-Partial-Product-Root{
+.Show-Partial-Product-Root-Success{
     top:86%;
+    background-color: rgb(82, 184, 82);
+}
+.Show-Partial-Product-Root-Warning{
+    top:86%;
+    background-color: rgb(230, 215, 19);
 }
