@@ -1,9 +1,10 @@
 .Checkout-Root{
     position: absolute;
+    width: 90%;
     display: flex;
     flex-direction: column;
     font-family: 'Quicksand-Regular';
-    padding-left: 24px;
+    padding: 14px;
     top:14%;
 }
 .Order-Detail-Root>ul{
@@ -12,6 +13,10 @@
 }
 .dark{
     background-color: rgb(199, 199, 199) !important;
+}
+.Address-Details{
+    list-style-type: none;
+    padding-left: 0px;
 }
 .Add-Address-Btn{
     width: 100%;
@@ -23,7 +28,7 @@
     border-radius: 5px;
     border: none;
 }
-.Save-Address-Btn{
+.Save-Address-Btn,.Payment-Btn{
     width: 90%;
     background-color: #2d8d92;
     color: white;
@@ -33,4 +38,9 @@
     border-radius: 5px;
     border: none;
     margin: 18px;
+}
+.Payment-Btn{
+    background-color: rgb(33, 180, 33);
+    margin: 0px;
+    width: 100%;
 }

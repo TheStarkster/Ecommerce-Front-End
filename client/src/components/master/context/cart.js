@@ -9,7 +9,7 @@ export default class Cart extends Component {
             CartItems: []
         }
         this.componentWillMount = () => {
-            axios.post('http://localhost:2024/user/get-cart', {
+            axios.post('http://3.87.22.103:2024/user/get-cart', {
                 id: '5da1171317addb2490371c6a'
             })
                 .then(response => {
@@ -26,7 +26,7 @@ export default class Cart extends Component {
                 this.setState({
                     CartItems: this.state.CartItems
                 }, () => {
-                    axios.post('http://localhost:2024/user/add-to-cart', {
+                    axios.post('http://3.87.22.103:2024/user/add-to-cart', {
                         id: '5da1171317addb2490371c6a',
                         cart: this.state.CartItems,
                         cartTotal: '10'
@@ -41,7 +41,7 @@ export default class Cart extends Component {
                     this.setState({
                         CartItems: this.state.CartItems
                     }, () => {
-                        axios.post('http://localhost:2024/user/add-to-cart', {
+                        axios.post('http://3.87.22.103:2024/user/add-to-cart', {
                             id: '5da1171317addb2490371c6a',
                             cart: this.state.CartItems,
                             cartTotal: '10'

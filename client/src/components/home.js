@@ -120,7 +120,7 @@ export default class Home extends Component {
                             <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
                         </div>
                         <div className="CheckoutBtn-Container">
-                            <button>Checkout</button>
+                            <button onClick={() => {this.props.history.push('/checkout')}}>Checkout</button>
                         </div>
                     </div>
                 </div>

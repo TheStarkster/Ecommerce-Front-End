@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import '../styles.css'
 import axios from 'axios'
+import { UserContext } from '../../components/master/context/user'
 
 class Login extends Component {
-
+    static contextType = UserContext
     constructor() {
         super()
         this.state = {
             password: '',
             email: '',
             Loading: 'none',
-            BlurValue:"0px"
+            BlurValue: "0px"
         }
         this.handlePasswordChange = (event) => {
             this.setState({
@@ -25,17 +26,19 @@ class Login extends Component {
         this.SubmitHandler = () => {
             this.setState({
                 Loading: 'block',
-                BlurValue:"4px"
+                BlurValue: "4px"
             })
-            axios.post('http://3.87.22.103:2024/signin',{
-                email:this.state.email,
-                pass:this.state.password
+            axios.post('http://3.87.22.103:2024/signin', {
+                email: this.state.email,
+                pass: this.state.password
             })
-            .then(response => {
-                if(response.data.message === "200: User Authenticated"){
-                    this.props.history.push('/')
-                }
-            })
+                .then(response => {
+                    if (response.data.message === "200: User Authenticated") {
+                        const { UpdateUserData } = this.context
+                        UpdateUserData(response.data)
+                        this.props.history.push('/')
+                    }
+                })
         }
     }
 
@@ -55,13 +58,13 @@ class Login extends Component {
                         top: "50%",
                         left: "50%",
                         transform: "translate(-50%,-50%)",
-                        borderRadius:'100px'
+                        borderRadius: '100px'
                     }}></img>
                 </div>
                 <div className="Register-Root"
-                style={{
-                    filter:'blur('+ this.state.BlurValue +')'
-                }}>
+                    style={{
+                        filter: 'blur(' + this.state.BlurValue + ')'
+                    }}>
                     <div className="Logo">
                         <div className="panel-Dental">Dental</div>
                         <div className="panel-Stall">Stall</div>
