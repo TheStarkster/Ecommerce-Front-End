@@ -97,7 +97,7 @@ export default class Checkout extends Component {
                             })
                     }
                     return (
-                        <div>
+                        <div className="Checkout-Root-Main">
                             <div className="Add-Address-Root">
                                 <div className="Option-Expand-Root">
                                     <h2>Add Address</h2>
