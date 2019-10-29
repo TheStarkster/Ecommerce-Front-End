@@ -1,5 +1,6 @@
 .Rec_Card{
     display: flex;
+    display: -webkit-flex;
     width: 150px;
     flex-direction: column;
     align-items: center;

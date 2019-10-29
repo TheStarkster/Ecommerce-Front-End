@@ -46,6 +46,7 @@
 }
 .cart-item{
     display: flex;
+    display: -webkit-flex;
     margin-bottom: 12px;
 }
 .cart-item>img{
@@ -61,11 +62,13 @@
 }
 .cart-total-container{
     display: flex;
+    display: -webkit-flex;
     flex-direction: column;
     padding:8px;
 }
 .row{
     display: flex;
+    display: -webkit-flex;
     flex-direction: row;
     margin-top:8px;
 }
