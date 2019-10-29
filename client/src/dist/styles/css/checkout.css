@@ -1,12 +1,12 @@
 .Checkout-Root{
-    position: absolute;
+    position: relative;
+    top:50px;
     width: 90%;
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
     font-family: 'Quicksand-Regular';
     padding: 14px;
-    top:14%;
 }
 .Order-Detail-Root>ul{
     list-style-type: none;

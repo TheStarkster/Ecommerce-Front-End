@@ -47,9 +47,11 @@
     font-size: 15px;
     margin: 0px;
 }
-.Footer-About>h6, .Footer-Social>h6, .Footer-Address>h6{
+
+.Footer-About>h6, .Footer-Social>h6, .Footer-Address>h6 {
     font-size: 12px;
 }
+
 .Footer-Developer {
     display: flex;
     display: -webkit-flex;
