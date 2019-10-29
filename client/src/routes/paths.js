@@ -8,6 +8,7 @@ import Profile from '../components/master/profile'
 import Cart from '../components/master/context/cart'
 import User from '../components/master/context/user'
 import ProductPage from '../components/product-page'
+import Footer from '../components/master/footer'
 import Checkout from '../components/checkout'
 class Paths extends Component {
     render() {
@@ -26,6 +27,7 @@ class Paths extends Component {
                             <Route exact path="/" component={Home} />
                             <Route exact path="/product" component={ProductPage} />
                             <Route exact path="/checkout" component={Checkout} />
+                            <Footer />
                         </Cart>
                     </User>
                 </Switch>

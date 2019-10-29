@@ -1,0 +1,72 @@
+.Footer-Root {
+    position: relative;
+    height: 320px;
+    width: inherit;
+    bottom: 0px;
+    background-color: #41c5ce;
+    background-image: linear-gradient(135deg, #41c5ce 0%, #085458 90%);
+    font-family: 'Quicksand-Regular';
+    flex-direction: column;
+}
+
+.Footer-Brand-Name>div {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.Footer-Content {
+    display: flex;
+    display: -webkit-flex;
+    background-color: #ffffff2b;
+    border-radius: 8px;
+    margin: 12px;
+}
+
+.Footer-Brand-Name {
+    color: white;
+    font-family: 'Ainslie';
+    font-style: italic;
+    font-size: 28px;
+    padding: 12px;
+    display: flex;
+    display: -webkit-flex;
+    justify-content: center;
+}
+
+.Footer-About, .Footer-Social, .Footer-Address {
+    flex: 1;
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    color: white;
+    padding: 12px;
+}
+
+.Footer-About>h4, .Footer-Social>h4, .Footer-Address>h4 {
+    color: rgba(255, 255, 255, 0.664);
+    font-size: 15px;
+    margin: 0px;
+}
+.Footer-About>h6, .Footer-Social>h6, .Footer-Address>h6{
+    font-size: 12px;
+}
+.Footer-Developer {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.Footer-Developer>a>h4 {
+    margin: 6px;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+}
+
+.Footer-Developer>h6 {
+    color: rgba(255, 255, 255, 0.664);
+}

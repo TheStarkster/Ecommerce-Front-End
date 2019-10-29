@@ -114,11 +114,6 @@ export default class ProductPage extends Component {
                     <button>Buy Now</button>
                     <button onClick={() => {
                         this.Update_Cart()
-                        // var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
-                        // addClass(PartialProductRoot,'Show-Partial-Product-Root')
-                        // setTimeout((params) => {
-                        //     removeClass(PartialProductRoot,'Show-Partial-Product-Root')
-                        // },2000)
                     }}>Add To Cart</button>
                     <button>Add To Wishlist</button>
                     <div className="Primary-Features">
