@@ -4,6 +4,7 @@ import Recommended from './Recommeded'
 import axios from 'axios'
 import { CartContext } from './master/context/cart'
 import '../dist/styles/css/product-page.css'
+import { addClass, removeClass } from '../functions/functions'
 import Product from '../components/master/partials/product'
 
 export default class ProductPage extends Component {
@@ -61,6 +62,36 @@ export default class ProductPage extends Component {
         })
         return this.ProductKeyFeatureArray
     }
+    CalculateSubtotal(CartItems) {
+        var total = 0;
+        if (CartItems !== undefined) {
+            CartItems.forEach(element => {
+                total = total + parseFloat(element.ProductPrice)
+            });
+        }
+        return total
+    }
+    RenderCartItems = () => {
+        this.CartItems = []
+        const { CartItems } = this.context
+        if (CartItems !== undefined) {
+            CartItems.forEach(element => {
+                this.CartItems.push(
+                    <li>
+                        <div className="cart-item">
+                            <img src={element.ProductImage} alt="Cart-Product" className="cart-product-image" />
+                            <div className="cart-item-details">
+                                <h6>{element.ProductName}</h6>
+                                <h6>Rs.{element.ProductPrice}</h6>
+                                <h6 className="Remove-Cart-Item">Remove Item</h6>
+                            </div>
+                        </div>
+                    </li>
+                )
+            })
+        }
+        return this.CartItems
+    }
     render() {
         const { CartItems } = this.context
         return (
@@ -107,9 +138,36 @@ export default class ProductPage extends Component {
                         <Recommended Products={this.state.SimilarProducts} NumberOfCard={2}></Recommended>
                     </div>
                 </div>
-                <div className="mobile-cart">
+                <div className="mobile-cart-expanded">
+                    <img src={require('../dist/assets/icons/icons8-delete-50.png')} className="Mobile-Cart-Close" alt="close" onClick={() => removeClass(document.getElementsByClassName('mobile-cart-expanded')[0], 'show')} />
+                    <h2>Cart Items</h2>
+                    <div className="ul-container">
+                        <ul>
+                            {this.RenderCartItems()}
+                        </ul>
+                    </div>
+                    <div className="cart-total-container">
+                        <div className="row">
+                            <h6>Sub-Total</h6>
+                            <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
+                        </div>
+                        <div className="row">
+                            <h6>Taxes</h6>
+                            <h4>Rs.0</h4>
+                        </div>
+                        <div className="row">
+                            <h6>Grand-Total</h6>
+                            <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
+                        </div>
+                        <div className="CheckoutBtn-Container">
+                            <button onClick={() => { this.props.history.push('/checkout') }}>Checkout</button>
+                        </div>
+                    </div>
+                </div>
+                <div className="mobile-cart" onClick={() => { addClass(document.getElementsByClassName('mobile-cart-expanded')[0], 'show') }
+                }>
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
-                    <div className="mobile-cart-noti">{CartItems !== undefined ? CartItems.length : 0}</div>
+                    <div className="mobile-cart-noti" id="mobile-cart-noti">{CartItems !== undefined ? CartItems.length : 0}</div>
                 </div>
                 <Product message="Product Added to Cart!"></Product>
             </div>
