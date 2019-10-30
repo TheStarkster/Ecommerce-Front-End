@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './master/navbar'
 import { CartContext } from './master/context/cart'
-import User, { UserContext } from './master/context/user'
+import { UserContext } from './master/context/user'
 import '../dist/styles/css/checkout.css'
 import Footer from '../components/master/footer'
 import { addClass, removeClass } from '../functions/functions'

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import '../../dist/styles/css/navbar.css'
-import User, { UserContext } from './context/user'
+import { UserContext } from './context/user'
 
 export default class Navbar extends Component {
     static contextType = UserContext
