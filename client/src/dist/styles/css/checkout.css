@@ -16,8 +16,18 @@
     background-color: rgb(199, 199, 199) !important;
 }
 .Address-Details{
+    display: flex;
     list-style-type: none;
     padding-left: 0px;
+}
+.Address-Details{
+    font-size: 14px;
+}
+.Address-Details>div{
+    margin: 12px;
+}
+.low{
+    color: grey;
 }
 .bg-green{
     background-color: #18c0c926;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Navbar from './master/navbar'
 import { CartContext } from './master/context/cart'
-import { UserContext } from './master/context/user'
+import User, { UserContext } from './master/context/user'
 import '../dist/styles/css/checkout.css'
 import Footer from '../components/master/footer'
 import { addClass, removeClass } from '../functions/functions'
@@ -13,7 +13,6 @@ export default class Checkout extends Component {
                 <CartContext.Consumer>{(cartContext) => {
                     const { CartItems } = cartContext
                     const { UserData, UpdateUserData } = userContext
-                    console.log(UserData.data)
                     this.CalculateSubtotal = (CartItems) => {
                         var total = 0;
                         CartItems.forEach(element => {
@@ -33,14 +32,14 @@ export default class Checkout extends Component {
                                     "amount": 50 * 100,
                                     "currency": "INR",
                                     "name": "DentalStall",
-                                    "description": UserData.data.name,
+                                    "description": UserData.name,
                                     "order_id": this.state.orderID,
                                     handler: function (response) {
                                         alert(response.razorpay_payment_id);
                                     },
                                     "prefill": {
-                                        "name": UserData.data.name,
-                                        "email": UserData.data.email,
+                                        "name": UserData.name,
+                                        "email": UserData.email,
                                     },
                                     "notes": {
                                         "address": "note value",
@@ -73,7 +72,8 @@ export default class Checkout extends Component {
                     }
                     this.SaveAddress = () => {
                         var NewUserObject = UserData
-                        NewUserObject.data.address = [
+                        console.log(UserData)
+                        NewUserObject.address = [
                             {
                                 default: {
                                     address: {
@@ -89,8 +89,8 @@ export default class Checkout extends Component {
                             }
                         ]
                         Axios.post('http://3.87.22.103:2024/user/save-address', {
-                            address: NewUserObject.data.address[0].default,
-                            id: '5da1171317addb2490371c6a'
+                            address: NewUserObject.address[0].default,
+                            id: UserData._id
                         })
                             .then(() => {
                                 UpdateUserData(NewUserObject)
@@ -146,22 +146,33 @@ export default class Checkout extends Component {
                                 <div className="Order-Shipping-Root">
                                     <h4>SHIPPING DETAILS</h4>
                                     <div className="hr dark"></div>
-                                    {UserData.data === undefined ?
-                                        <h6>Loading...</h6>
+                                    {UserData === undefined ?
+                                        <button className="Add-Address-Btn" onClick={() => { addClass(document.getElementsByClassName('Add-Address-Root')[0], 'show-add-address') }}>Add Address +</button>
                                         :
-                                        UserData.data.address === undefined ?
+                                        UserData.address === undefined ?
                                             <button className="Add-Address-Btn" onClick={() => { addClass(document.getElementsByClassName('Add-Address-Root')[0], 'show-add-address') }}>Add Address +</button>
                                             :
-                                            UserData.data.address.length > 0 ?
+                                            UserData.address.length > 0 ?
                                                 <div>
                                                     <ul className="Address-Details">
-                                                        <li>{UserData.data.address[0].default.address.name}</li>
-                                                        <li>{UserData.data.address[0].default.address.email}</li>
-                                                        <li>{UserData.data.address[0].default.address.contact}</li>
-                                                        <li>{UserData.data.address[0].default.address.city}</li>
-                                                        <li>{UserData.data.address[0].default.address.state}</li>
-                                                        <li>{UserData.data.address[0].default.address.street}</li>
-                                                        <li>{UserData.data.address[0].default.address.pincode}</li>
+                                                        <div className="column low">
+                                                            <li>Name</li>
+                                                            <li>Email</li>
+                                                            <li>Contact</li>
+                                                            <li>City</li>
+                                                            <li>State</li>
+                                                            <li>Street</li>
+                                                            <li>Pincode</li>
+                                                        </div>
+                                                        <div className="column">
+                                                            <li>{UserData.address[0].default.address.name}</li>
+                                                            <li>{UserData.address[0].default.address.email}</li>
+                                                            <li>{UserData.address[0].default.address.contact}</li>
+                                                            <li>{UserData.address[0].default.address.city}</li>
+                                                            <li>{UserData.address[0].default.address.state}</li>
+                                                            <li>{UserData.address[0].default.address.street}</li>
+                                                            <li>{UserData.address[0].default.address.pincode}</li>
+                                                        </div>
                                                     </ul>
                                                 </div>
                                                 :
