@@ -13,6 +13,7 @@ export default class ProductPage extends Component {
         super(props)
         this.state = {
             SimilarProducts: [],
+            qty:1
         }
         console.log(this.props.location.state.data)
         this.componentWillMount = () => {
@@ -53,7 +54,8 @@ export default class ProductPage extends Component {
             ProductID: this.props.location.state.data.ProductID,
             ProductName: this.props.location.state.data.ProductName,
             ProductImage: this.props.location.state.data.ProductImage,
-            ProductPrice: this.props.location.state.data.ProductPrice
+            ProductPrice: this.props.location.state.data.ProductPrice,
+            ProductQty:this.state.qty
         })
     }
     RenderKeyFeatures() {

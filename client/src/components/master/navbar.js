@@ -100,7 +100,7 @@ export default class Navbar extends Component {
                                 })
                             }
                         }}>
-                            {UserData === {} ? <div>Login/Signup</div> : UserData.name}
+                            {UserData.name === undefined ? <div className="nav-auth">Login/Signup</div> : UserData.name}
                         </li>
                         <li className="li-desktop" id="li-desktop-2">
                             Deals
