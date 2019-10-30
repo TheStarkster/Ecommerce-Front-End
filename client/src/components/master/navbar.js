@@ -67,7 +67,7 @@ export default class Navbar extends Component {
     render() {
         const { UserData } = this.context
         return (
-            <div className="Navbar-Root" id="Navbar-Root">
+            <div className="Navbar-Root" id="Navbar-Root" style={{}}>
                 <img src={require('../../dist/assets/animation/Preloader.gif')} alt="Loading" style={{
                     position: "fixed",
                     display: this.state.Loading,
@@ -100,7 +100,7 @@ export default class Navbar extends Component {
                                 })
                             }
                         }}>
-                            {UserData === undefined || null || {} ? <div>Login/Signup</div> : UserData.name}
+                            {UserData === {} ? <div>Login/Signup</div> : UserData.name}
                         </li>
                         <li className="li-desktop" id="li-desktop-2">
                             Deals

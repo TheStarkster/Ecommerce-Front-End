@@ -9,12 +9,15 @@ import Cart from '../components/master/context/cart'
 import User from '../components/master/context/user'
 import ProductPage from '../components/product-page'
 import Checkout from '../components/checkout'
+import Navbar from '../components/master/navbar'
+
 class Paths extends Component {
     render() {
         return (
             <div>
                 <Switch>
                     <User>
+                        <Navbar></Navbar>
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/login/*" component={Login} />
                         <Route exact path="/SignIn" component={Login} />

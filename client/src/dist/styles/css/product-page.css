@@ -94,7 +94,13 @@
     border: 1.5px solid #6dd470;
     border-radius: 12px;
 }
-
+.Login-Container{
+    position: fixed;
+    background-color: white;
+    height: 100%;
+    width: 100%;
+    z-index: 9999;
+}
 .Primary-Features>.h4 {
     margin: 0px;
     padding: 8px;

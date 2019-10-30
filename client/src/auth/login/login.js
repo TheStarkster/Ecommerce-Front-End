@@ -44,7 +44,7 @@ class Login extends Component {
 
     render() {
         return (
-            <div>
+            <div className="Master-Panel">
                 <div className="Loading-Root" style={{
                     display: this.state.Loading,
                     width: "100%",
@@ -77,6 +77,7 @@ class Login extends Component {
                             placeholder="Email"
                             onChange={this.handleEmailChange} />
                     </div>
+
                     <div className="form-field">
                         <input type="password"
                             className="password-input"
@@ -87,6 +88,7 @@ class Login extends Component {
                     <button className="Redirect-input" onClick={() => this.props.history.push('/signup')}>Sign Up</button>
                 </div>
             </div>
+
         );
     }
 }

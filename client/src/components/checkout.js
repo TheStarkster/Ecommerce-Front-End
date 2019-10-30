@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import Navbar from './master/navbar'
 import { CartContext } from './master/context/cart'
 import { UserContext } from './master/context/user'
 import '../dist/styles/css/checkout.css'
@@ -119,7 +118,6 @@ export default class Checkout extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <Navbar history={this.props.history} />
                             <div className="Checkout-Root">
                                 <h2>Checkout</h2>
                                 <div className="Order-Detail-Root">

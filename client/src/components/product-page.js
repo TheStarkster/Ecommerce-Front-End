@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
-import Navbar from './master/navbar'
 import Recommended from './Recommeded'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
 import { CartContext } from './master/context/cart'
 import '../dist/styles/css/product-page.css'
 import { addClass, removeClass } from '../functions/functions'
@@ -15,7 +13,6 @@ export default class ProductPage extends Component {
         super(props)
         this.state = {
             SimilarProducts: [],
-            ProductID:''
         }
         console.log(this.props.location.state.data)
         this.componentWillMount = () => {
@@ -31,7 +28,6 @@ export default class ProductPage extends Component {
                     }
                     this.setState({
                         SimilarProducts: Temp_SimilarProducts,
-                        ProductID:this.props.location.state.data.ProductID
                     })
                 })
         }
@@ -47,8 +43,9 @@ export default class ProductPage extends Component {
         })
         return this.PrimaryFeatureArray
     }
-    Redirect(to){
-        return window.location.replace('http://localhost:3000/'+to)
+    RedirectTo(to){
+        localStorage.setItem('to-buy',this.props.location.state.data.ProductID)
+        this.props.history.push(to)
     }
     Update_Cart() {
         const { UpdateCart } = this.context
@@ -104,7 +101,6 @@ export default class ProductPage extends Component {
         const { CartItems } = this.context
         return (
             <div>
-                <Navbar></Navbar>
                 <div className="Product-Page-Root">
                     <img src={this.props.location.state.data.ProductImage} alt="Product" className="product-image"></img>
                     By {this.props.location.state.data.ProductBrand}
@@ -123,7 +119,7 @@ export default class ProductPage extends Component {
                     <button onClick={() => {
                         this.props.location.state.data.UserLoggedIn ?
                             this.Update_Cart() :
-                            this.Redirect('login/'+this.state.ProductID)
+                            this.RedirectTo('/login')
                     }}>Add To Cart</button>
                     <button>Add To Wishlist</button>
                     <div className="Primary-Features">

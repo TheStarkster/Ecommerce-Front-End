@@ -34,10 +34,10 @@ class Register extends Component {
                     if (response.data.message === "200: Registered") {
                         const { UpdateUserData } = this.context
                         UpdateUserData({
-                            name:this.state.name,
-                            email:this.state.email,
-                            _id:response.data.UserID,
-                            address:[]
+                            name: this.state.name,
+                            email: this.state.email,
+                            _id: response.data.UserID,
+                            address: []
                         })
                         this.props.history.push('/')
                     }
@@ -54,32 +54,34 @@ class Register extends Component {
 
     render() {
         return (
-            <div className="Register-Root">
-                <div className="Logo">
-                    <div className="panel-Dental">Dental</div>
-                    <div className="panel-Stall">Stall</div>
+            <div className="Master-Panel">
+                <div className="Register-Root">
+                    <div className="Logo">
+                        <div className="panel-Dental">Dental</div>
+                        <div className="panel-Stall">Stall</div>
+                    </div>
+                    <h2>Please Enter Details</h2>
+                    <h5>To Register</h5>
+                    <div className="form-field">
+                        <input type="text"
+                            className="name-input"
+                            placeholder="Full Name"
+                            onChange={this.handleNameChange} />
+                    </div>
+                    <div className="form-field">
+                        <input type="email"
+                            className="email-input"
+                            placeholder="Email"
+                            onChange={this.handleEmailChange} />
+                    </div>
+                    <PasswordInput
+                        value={this.state.password}
+                        placeholder="Your secure password"
+                        handleChange={(e) => this.handlePasswordChange(e, 'password')}
+                    />
+                    <button className="submit-input" onClick={() => this.handleSubmit()}>Sign Up</button>
+                    <button className="Redirect-input" onClick={() => this.props.history.push('/login')}>Sign In</button>
                 </div>
-                <h2>Please Enter Details</h2>
-                <h5>To Register</h5>
-                <div className="form-field">
-                    <input type="text"
-                        className="name-input"
-                        placeholder="Full Name"
-                        onChange={this.handleNameChange} />
-                </div>
-                <div className="form-field">
-                    <input type="email"
-                        className="email-input"
-                        placeholder="Email"
-                        onChange={this.handleEmailChange} />
-                </div>
-                <PasswordInput
-                    value={this.state.password}
-                    placeholder="Your secure password"
-                    handleChange={(e) => this.handlePasswordChange(e, 'password')}
-                />
-                <button className="submit-input" onClick={() => this.handleSubmit()}>Sign Up</button>
-                <button className="Redirect-input" onClick={() => this.props.history.push('/login')}>Sign In</button>
             </div>
         );
     }

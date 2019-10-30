@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import Card from './card'
 import BrandStrip from './brandstrip'
 import SearchBar from './searchbar'
-import Navbar from './master/navbar'
 import '../dist/styles/css/home.css'
 import { CartContext } from './master/context/cart'
 import axios from 'axios'
@@ -17,12 +16,39 @@ export default class Home extends Component {
             ProductsArray: []
         }
         this.componentWillMount = () => {
-            axios.get('http://3.87.22.103:2024/User-fetch-products')
-                .then(response => {
-                    this.setState({
-                        ProductsArray: [...response.data.products]
+            if (localStorage.getItem('to-buy') !== null) {
+                axios.post('http://3.87.22.103:2024/get-product', { id: localStorage.getItem('to-buy') })
+                    .then(response => {
+                        localStorage.removeItem('to-buy')
+                        this.props.history.push({
+                            pathname: '/product',
+                            state: {
+                                data: {
+                                    ProductBrand: response.data[0].brand,
+                                    ProductDescription: response.data[0].disc,
+                                    ProductImage: response.data[0].image,
+                                    ProductKeyFeatures: response.data[0].KeyFeatures,
+                                    ProductMrp: response.data[0].mrp,
+                                    ProductName: response.data[0].name,
+                                    ProductPrice: response.data[0].price,
+                                    ProductPrimaryFeatures: response.data[0].PrimaryFeatures,
+                                    ProductRDL: response.data[0].rdl,
+                                    ProductTags: response.data[0].tags,
+                                    ProductID: response.data[0]._id,
+                                    UserLoggedIn: true
+                                }
+                            }
+                        })
                     })
-                })
+
+            } else {
+                axios.get('http://3.87.22.103:2024/User-fetch-products')
+                    .then(response => {
+                        this.setState({
+                            ProductsArray: [...response.data.products]
+                        })
+                    })
+            }
         }
     }
     CalculateSubtotal(CartItems) {
@@ -81,7 +107,6 @@ export default class Home extends Component {
         const { CartItems } = this.context
         return (
             <div>
-                <Navbar history={this.props.history}></Navbar>
                 <div className="Poster">
                     <h1 style={{
                         backgroundColor: '#18c0c961',
