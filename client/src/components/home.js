@@ -6,6 +6,7 @@ import Navbar from './master/navbar'
 import '../dist/styles/css/home.css'
 import { CartContext } from './master/context/cart'
 import axios from 'axios'
+import Footer from '../components/master/footer'
 import { addClass, removeClass } from '../functions/functions'
 
 export default class Home extends Component {
@@ -133,6 +134,7 @@ export default class Home extends Component {
                     <img src={require('../dist/assets/icons/icons8-shopping-cart-48.png')} alt="cart"></img>
                     <div className="mobile-cart-noti" id="mobile-cart-noti">{CartItems !== undefined ? CartItems.length : 0}</div>
                 </div>
+                <Footer />
             </div>
         )
     }

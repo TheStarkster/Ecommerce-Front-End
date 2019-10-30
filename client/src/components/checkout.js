@@ -3,6 +3,7 @@ import Navbar from './master/navbar'
 import { CartContext } from './master/context/cart'
 import { UserContext } from './master/context/user'
 import '../dist/styles/css/checkout.css'
+import Footer from '../components/master/footer'
 import { addClass, removeClass } from '../functions/functions'
 import Axios from 'axios'
 export default class Checkout extends Component {
@@ -173,6 +174,7 @@ export default class Checkout extends Component {
                                     <button className="Payment-Btn" onClick={() => { this.RequestOrder() }}>Pay Now</button>
                                 </div>
                             </div>
+                            <Footer></Footer>
                         </div>
                     )
                 }}</CartContext.Consumer>

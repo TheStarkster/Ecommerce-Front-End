@@ -4,7 +4,7 @@ import '../../dist/styles/css/footer.css'
 export default class Footer extends Component {
     render() {
         return (
-            <div className="Footer-Root">
+            <div className="Footer-Root" id="Footer">
                 <div className="Footer-Brand-Name">
                     <div>
                         <div>Dental</div>

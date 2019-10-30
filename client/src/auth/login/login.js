@@ -84,7 +84,7 @@ class Login extends Component {
                             onChange={this.handlePasswordChange} />
                     </div>
                     <button className="submit-input" onClick={this.SubmitHandler}>Sign In</button>
-                    <button className="Redirect-input">Sign Up</button>
+                    <button className="Redirect-input" onClick={() => this.props.history.push('/signup')}>Sign Up</button>
                 </div>
             </div>
         );

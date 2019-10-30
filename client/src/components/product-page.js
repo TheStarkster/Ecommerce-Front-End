@@ -5,6 +5,7 @@ import axios from 'axios'
 import { CartContext } from './master/context/cart'
 import '../dist/styles/css/product-page.css'
 import { addClass, removeClass } from '../functions/functions'
+import Footer from '../components/master/footer'
 import Product from '../components/master/partials/product'
 
 export default class ProductPage extends Component {
@@ -165,6 +166,7 @@ export default class ProductPage extends Component {
                     <div className="mobile-cart-noti" id="mobile-cart-noti">{CartItems !== undefined ? CartItems.length : 0}</div>
                 </div>
                 <Product message="Product Added to Cart!"></Product>
+                <Footer />
             </div>
         )
     }
