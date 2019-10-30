@@ -10,57 +10,57 @@ export default class Navbar extends Component {
             navbarExpanded: false,
             Loading: 'none',
         }
+    }
+    componentDidMount = () => {
         var scroll = 0
-        this.componentDidMount = () => {
-            window.addEventListener("scroll", function (event) {
-                scroll = this.scrollY;
+        window.addEventListener("scroll", function (event) {
+            scroll = this.scrollY;
+            if (scroll > 40) {
+                this.document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
+                this.document.getElementById('nav-item-dentalstall').style.fontSize = '26px'
+                this.document.getElementById('nav-dental').style.color = 'white'
+                this.document.getElementById('nav-stall').style.color = 'white'
+            }
+            if (scroll < 40) {
+                if (document.getElementById('li-desktop-1').style.display !== 'block') {
+                    this.document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
+                    this.document.getElementById('nav-dental').style.color = '#4b6679'
+                    this.document.getElementById('nav-stall').style.color = '#40d965'
+                }
+                this.document.getElementById('nav-item-dentalstall').style.fontSize = '38px'
+            }
+        })
+        this.ExpandNavbar = () => {
+            if (this.state.navbarExpanded) {
                 if (scroll > 40) {
-                    this.document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
-                    this.document.getElementById('nav-item-dentalstall').style.fontSize = '26px'
-                    this.document.getElementById('nav-dental').style.color = 'white'
-                    this.document.getElementById('nav-stall').style.color = 'white'
-                }
-                if (scroll < 40) {
-                    if (document.getElementById('li-desktop-1').style.display !== 'block') {
-                        this.document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
-                        this.document.getElementById('nav-dental').style.color = '#4b6679'
-                        this.document.getElementById('nav-stall').style.color = '#40d965'
-                    }
-                    this.document.getElementById('nav-item-dentalstall').style.fontSize = '38px'
-                }
-            })
-            this.ExpandNavbar = () => {
-                if (this.state.navbarExpanded) {
-                    if (scroll > 40) {
-                        document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
-                        document.getElementById('Navbar-Root').style.height = '67px'
-                        document.getElementById('li-desktop-1').style.display = 'none'
-                        document.getElementById('li-desktop-2').style.display = 'none'
-                        document.getElementById('nav-dental').style.color = 'white'
-                        document.getElementById('nav-stall').style.color = 'white'
-                    }
-                    if (scroll < 40) {
-                        document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
-                        document.getElementById('Navbar-Root').style.height = '67px'
-                        document.getElementById('li-desktop-1').style.display = 'none'
-                        document.getElementById('li-desktop-2').style.display = 'none'
-                        document.getElementById('nav-dental').style.color = '#4b6679'
-                        document.getElementById('nav-stall').style.color = '#40d965'
-                    }
-                    this.setState({
-                        navbarExpanded: false
-                    })
-                } else {
                     document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
-                    document.getElementById('Navbar-Root').style.height = '162px'
-                    document.getElementById('li-desktop-1').style.display = 'block'
-                    document.getElementById('li-desktop-2').style.display = 'block'
+                    document.getElementById('Navbar-Root').style.height = '67px'
+                    document.getElementById('li-desktop-1').style.display = 'none'
+                    document.getElementById('li-desktop-2').style.display = 'none'
                     document.getElementById('nav-dental').style.color = 'white'
                     document.getElementById('nav-stall').style.color = 'white'
-                    this.setState({
-                        navbarExpanded: true
-                    })
                 }
+                if (scroll < 40) {
+                    document.getElementById('Navbar-Root').style.backgroundColor = 'transparent'
+                    document.getElementById('Navbar-Root').style.height = '67px'
+                    document.getElementById('li-desktop-1').style.display = 'none'
+                    document.getElementById('li-desktop-2').style.display = 'none'
+                    document.getElementById('nav-dental').style.color = '#4b6679'
+                    document.getElementById('nav-stall').style.color = '#40d965'
+                }
+                this.setState({
+                    navbarExpanded: false
+                })
+            } else {
+                document.getElementById('Navbar-Root').style.backgroundColor = '#18c0c9'
+                document.getElementById('Navbar-Root').style.height = '162px'
+                document.getElementById('li-desktop-1').style.display = 'block'
+                document.getElementById('li-desktop-2').style.display = 'block'
+                document.getElementById('nav-dental').style.color = 'white'
+                document.getElementById('nav-stall').style.color = 'white'
+                this.setState({
+                    navbarExpanded: true
+                })
             }
         }
     }
@@ -100,7 +100,7 @@ export default class Navbar extends Component {
                                 })
                             }
                         }}>
-                            {UserData.name}
+                            {UserData === undefined || null || {} ? <div>Login/Signup</div> : UserData.name}
                         </li>
                         <li className="li-desktop" id="li-desktop-2">
                             Deals

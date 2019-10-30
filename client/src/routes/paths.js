@@ -16,6 +16,7 @@ class Paths extends Component {
                 <Switch>
                     <User>
                         <Route exact path="/login" component={Login} />
+                        <Route exact path="/login/*" component={Login} />
                         <Route exact path="/SignIn" component={Login} />
                         <Route exact path="/profile" component={Profile} />
                         <Route exact path="/Register" component={Register} />
