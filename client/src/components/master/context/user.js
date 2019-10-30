@@ -10,10 +10,11 @@ export default class User extends Component {
         }
         this.UpdateUserData = (UserData) => {
             this.setState({
-                UserData: UserData.data
+                UserData: UserData
             }, () => {
                 localStorage.removeItem('user')
-                localStorage.setItem('user', JSON.stringify(this.state.UserData.data))
+                console.log(UserData)
+                localStorage.setItem('user', JSON.stringify(this.state.UserData))
             })
         }
         this.componentWillMount = () => {

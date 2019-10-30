@@ -35,7 +35,7 @@ class Login extends Component {
                 .then(response => {
                     if (response.data.message === "200: User Authenticated") {
                         const { UpdateUserData } = this.context
-                        UpdateUserData(response.data)
+                        UpdateUserData(response.data.data)
                         this.props.history.push('/')
                     }
                 })
