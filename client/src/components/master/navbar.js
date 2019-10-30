@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import '../../dist/styles/css/navbar.css'
+import User, { UserContext } from './context/user'
 
 export default class Navbar extends Component {
+    static contextType = UserContext
     constructor(props) {
         super(props)
         this.state = {
@@ -63,6 +65,7 @@ export default class Navbar extends Component {
         }
     }
     render() {
+        const { UserData } = this.context
         return (
             <div className="Navbar-Root" id="Navbar-Root">
                 <img src={require('../../dist/assets/animation/Preloader.gif')} alt="Loading" style={{
@@ -97,7 +100,7 @@ export default class Navbar extends Component {
                                 })
                             }
                         }}>
-                            Account
+                            {UserData.name}
                         </li>
                         <li className="li-desktop" id="li-desktop-2">
                             Deals
