@@ -14,7 +14,7 @@ export default class Home extends Component {
         super(props)
         this.state = {
             ProductsArray: []
-        }
+        }        
         this.componentWillMount = () => {
             if (localStorage.getItem('to-buy') !== null) {
                 axios.post('http://3.87.22.103:2024/get-product', { id: localStorage.getItem('to-buy') })
@@ -56,13 +56,14 @@ export default class Home extends Component {
         if (CartItems !== undefined) {
             CartItems.forEach(element => {
                 total = total + parseFloat(element.ProductPrice)
+                total = total * parseFloat(element.ProductQty)
             });
         }
         return total
     }
     RenderCartItems = () => {
         this.CartItems = []
-        const { CartItems } = this.context
+        const { CartItems,RemoveFromCart } = this.context
         if (CartItems !== undefined) {
             CartItems.forEach(element => {
                 this.CartItems.push(
@@ -72,7 +73,8 @@ export default class Home extends Component {
                             <div className="cart-item-details">
                                 <h6>{element.ProductName}</h6>
                                 <h6>Rs.{element.ProductPrice}</h6>
-                                <h6 className="Remove-Cart-Item">Remove Item</h6>
+                                <h6>Qty {element.ProductQty}</h6>
+                                <h6 className="Remove-Cart-Item" onClick={() => RemoveFromCart(element)} style={{ color: 'red' }}>Remove Item</h6>
                             </div>
                         </div>
                     </li>

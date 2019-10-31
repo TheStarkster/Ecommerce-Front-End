@@ -23,7 +23,7 @@ export default class Card extends Component {
                             ProductRDL: this.props.ProductRDL,
                             ProductTags: this.props.ProductTags,
                             ProductID: this.props.ProductID,
-                            UserLoggedIn:UserData === undefined || {} || null ? false : true
+                            UserLoggedIn:UserData === {} ? false : true
                         }
                     }
                 })

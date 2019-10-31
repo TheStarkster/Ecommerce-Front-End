@@ -13,9 +13,8 @@ export default class ProductPage extends Component {
         super(props)
         this.state = {
             SimilarProducts: [],
-            qty:1
+            qty: 1
         }
-        console.log(this.props.location.state.data)
         this.componentWillMount = () => {
             axios.post('http://3.87.22.103:2024/similar-product', {
                 tags: this.props.location.state.data.ProductTags
@@ -44,8 +43,8 @@ export default class ProductPage extends Component {
         })
         return this.PrimaryFeatureArray
     }
-    RedirectTo(to){
-        localStorage.setItem('to-buy',this.props.location.state.data.ProductID)
+    RedirectTo(to) {
+        localStorage.setItem('to-buy', this.props.location.state.data.ProductID)
         this.props.history.push(to)
     }
     Update_Cart() {
@@ -55,7 +54,7 @@ export default class ProductPage extends Component {
             ProductName: this.props.location.state.data.ProductName,
             ProductImage: this.props.location.state.data.ProductImage,
             ProductPrice: this.props.location.state.data.ProductPrice,
-            ProductQty:this.state.qty
+            ProductQty: this.state.qty
         })
     }
     RenderKeyFeatures() {
@@ -74,6 +73,7 @@ export default class ProductPage extends Component {
         if (CartItems !== undefined) {
             CartItems.forEach(element => {
                 total = total + parseFloat(element.ProductPrice)
+                total = total * parseFloat(element.ProductQty)
             });
         }
         return total
@@ -90,6 +90,7 @@ export default class ProductPage extends Component {
                             <div className="cart-item-details">
                                 <h6>{element.ProductName}</h6>
                                 <h6>Rs.{element.ProductPrice}</h6>
+                                <h6>Qty {element.ProductQty}</h6>
                                 <h6 className="Remove-Cart-Item">Remove Item</h6>
                             </div>
                         </div>
@@ -116,6 +117,11 @@ export default class ProductPage extends Component {
                         <div className="mrp-container">
                             <s>MRP: Rs.{this.props.location.state.data.ProductMrp}</s>
                         </div>
+                    </div>
+                    <div className="Qty-Container-Root">
+                        <div onClick={() => this.setState({qty: this.state.qty === 1 ? 1 : parseFloat(this.state.qty) - 1})}>-</div>
+                        {this.state.qty}
+                        <div onClick={() => this.setState({qty:parseFloat(this.state.qty) + 1})}>+</div>
                     </div>
                     <button>Buy Now</button>
                     <button onClick={() => {

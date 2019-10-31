@@ -16,6 +16,7 @@ export default class Checkout extends Component {
                         var total = 0;
                         CartItems.forEach(element => {
                             total = total + parseFloat(element.ProductPrice)
+                            total = total * parseFloat(element.ProductQty)
                         });
                         return total
                     }
@@ -61,6 +62,7 @@ export default class Checkout extends Component {
                                         <div className="cart-item-details">
                                             <h6>{element.ProductName}</h6>
                                             <h6>Rs.{element.ProductPrice}</h6>
+                                            <h6>Qty {element.ProductQty}</h6>
                                             <h6 className="Remove-Cart-Item">Remove Item</h6>
                                         </div>
                                     </div>

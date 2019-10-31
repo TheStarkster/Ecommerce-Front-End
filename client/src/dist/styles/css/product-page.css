@@ -94,6 +94,34 @@
     border: 1.5px solid #6dd470;
     border-radius: 12px;
 }
+.Qty-Container-Root{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(224, 224, 224);
+    width: 60%;
+}
+.Qty-Container-Root>div{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    border-radius: 100px;
+    padding: 4px;
+    font-size: 18px;
+    width: 20px;
+    height: 20px;
+    background-color: #3d5464;
+    border:none;
+    outline: none;
+    margin-right: 21px;
+    margin-left: 21px;
+}
 .Login-Container{
     position: fixed;
     background-color: white;

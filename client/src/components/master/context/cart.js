@@ -24,18 +24,21 @@ export default class Cart extends Component {
                     })
                 })
         }
+        this.RemoveFromCart = (Product) => {
+            // console.log(this.state.CartItems.filter(x=>x.ProductID !== Product.ProductID))
+            axios.post('http://3.87.22.103:2024/user/remove-from-cart',{id:Product.ProductID})
+            .then(response=> {
+                console.log(response)
+            })
+        }
         this.UpdateCart = (Product) => {
             const { UserData } = this.context
-            console.log(this.state.CartItems)
             if (this.state.CartItems === undefined) {
                 this.state.CartItems = []
                 this.state.CartItems.push(Product)
                 this.setState({
                     CartItems: this.state.CartItems
                 }, () => {
-                    console.log(UserData)
-                    console.log(this.state.CartItems)
-                    console.log(Product)
                     axios.post('http://3.87.22.103:2024/user/add-to-cart', {
                         id: UserData._id,
                         cart: this.state.CartItems,
@@ -62,7 +65,6 @@ export default class Cart extends Component {
                         axios.post('http://3.87.22.103:2024/user/add-to-cart', {
                             id: UserData._id,
                             cart: this.state.CartItems,
-                            cartTotal: '10'
                         })
                             .then(() => {
                                 localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
@@ -80,7 +82,7 @@ export default class Cart extends Component {
 
     render() {
         return (
-            <CartContext.Provider value={{ ...this.state, UpdateCart: this.UpdateCart }}>
+            <CartContext.Provider value={{ ...this.state, UpdateCart: this.UpdateCart, RemoveFromCart:this.RemoveFromCart }}>
                 {this.props.children}
             </CartContext.Provider>
         )
