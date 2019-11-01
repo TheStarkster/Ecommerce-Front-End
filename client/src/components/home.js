@@ -13,8 +13,8 @@ export default class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            ProductsArray: []
-        }        
+            ProductsArray: [],
+        }
         this.componentWillMount = () => {
             if (localStorage.getItem('to-buy') !== null) {
                 axios.post('http://3.87.22.103:2024/get-product', { id: localStorage.getItem('to-buy') })
@@ -63,7 +63,7 @@ export default class Home extends Component {
     }
     RenderCartItems = () => {
         this.CartItems = []
-        const { CartItems,RemoveFromCart } = this.context
+        const { CartItems, RemoveFromCart } = this.context
         if (CartItems !== undefined) {
             CartItems.forEach(element => {
                 this.CartItems.push(
@@ -74,7 +74,10 @@ export default class Home extends Component {
                                 <h6>{element.ProductName}</h6>
                                 <h6>Rs.{element.ProductPrice}</h6>
                                 <h6>Qty {element.ProductQty}</h6>
-                                <h6 className="Remove-Cart-Item" onClick={() => RemoveFromCart(element)} style={{ color: 'red' }}>Remove Item</h6>
+                                <h6 className="Remove-Cart-Item" onClick={() => {
+                                    document.getElementById('Cart-Loader').style.opacity = 1
+                                    RemoveFromCart(element)
+                                }} style={{ color: 'red' }}>Remove Item</h6>
                             </div>
                         </div>
                     </li>
@@ -132,7 +135,12 @@ export default class Home extends Component {
                 </div>
                 <div className="mobile-cart-expanded">
                     <img src={require('../dist/assets/icons/icons8-delete-50.png')} className="Mobile-Cart-Close" alt="close" onClick={() => removeClass(document.getElementsByClassName('mobile-cart-expanded')[0], 'show')} />
-                    <h2>Cart Items</h2>
+                    <h2 className="cart-heading">
+                        Cart Items
+                        <div className="Loader" id="Cart-Loader">
+                            <img src={require('../dist/assets/animation/cartspinner.gif')} alt="spinner"></img>
+                        </div>
+                    </h2>
                     <div className="ul-container">
                         <ul>
                             {this.RenderCartItems()}

@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import '../../dist/styles/css/navbar.css'
 import { UserContext } from './context/user'
+import  { withRouter } from 'react-router-dom'
 
-export default class Navbar extends Component {
+class Navbar extends Component {
     static contextType = UserContext
     constructor(props) {
         super(props)
@@ -89,17 +90,7 @@ export default class Navbar extends Component {
                                 </div>
                             </div>
                         </li>
-                        <li className="li-desktop" id="li-desktop-1" onClick={() => {
-                            if (this.props.history.location.pathname !== '/profile') {
-                                this.setState({
-                                    Loading: 'block'
-                                }, () => {
-                                    setTimeout(() => {
-                                        this.props.history.push('/profile')
-                                    }, 2000)
-                                })
-                            }
-                        }}>
+                        <li className="li-desktop" id="li-desktop-1" onClick={() => this.props.history.push('/profile')}>
                             {UserData.name === undefined ? <div className="nav-auth">Login/Signup</div> : UserData.name}
                         </li>
                         <li className="li-desktop" id="li-desktop-2">
@@ -112,3 +103,5 @@ export default class Navbar extends Component {
         )
     }
 }
+
+export default withRouter(Navbar)

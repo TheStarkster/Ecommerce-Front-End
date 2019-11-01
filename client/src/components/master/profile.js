@@ -5,10 +5,11 @@ import ProfileOrders from '../profile-orders'
 import ProfileNotification from '../profile-notification'
 import ProfileSettings from '../profile-settings'
 import ProfileWishlist from '../profile-wishlist'
-import Navbar from './navbar'
 import ProfilePayments from '../profile-payments'
+import {UserContext} from './context/user'
 
 class Profile extends Component {
+    static contextType = UserContext
     constructor(props) {
         super(props)
         this.state = {
@@ -76,15 +77,15 @@ class Profile extends Component {
         }
     }
     render() {
+        const {UserData} = this.context
         return (
             <div className="Profile-Root">
-                <Navbar history={this.props.history}></Navbar>
                 {
                     this.RenderOption()
                 }
                 <div className="Avatar">
                     <img src={require('../../dist/assets/icons/user-dp.jpg')} alt="User" />
-                    UserName
+                    {UserData.name}
                 </div>
                 <div className="Credits-Root">
                     Rs.0
@@ -92,15 +93,15 @@ class Profile extends Component {
                 <div className="Sub-Details">
                     <div>
                         <img src={require('../../dist/assets/icons/icons8-important-mail-96.png')} alt="Email" />
-                        sample@sample.com
+                        {UserData.email}
                     </div>
                     <div>
                         <img src={require('../../dist/assets/icons/icons8-user-location-90.png')} alt="Location" />
-                        New Delhi, India
+                        {UserData.region}
                     </div>
                     <div>
                         <img src={require('../../dist/assets/icons/icons8-phone-96.png')} alt="Contact" />
-                        +91 9953XXXXX
+                        Not Provided
                     </div>
                 </div>
                 <div className="Profile-Option-Card">

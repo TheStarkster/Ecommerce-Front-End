@@ -66,6 +66,20 @@
     flex-direction: column;
     padding:8px;
 }
+#Cart-Loader{
+    opacity: 0;
+}
+.cart-heading{
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+}
+.Loader{
+    position: relative;
+}
+.Loader>img{
+    width: 40px;
+}
 .row{
     display: flex;
     display: -webkit-flex;

@@ -25,23 +25,27 @@ class Register extends Component {
             })
         }
         this.handleSubmit = (event) => {
-            axios.post('http://3.87.22.103:2024/signup', {
-                email: this.state.email,
-                pass: this.state.password,
-                name: this.state.name
-            })
-                .then(response => {
-                    if (response.data.message === "200: Registered") {
-                        const { UpdateUserData } = this.context
-                        UpdateUserData({
-                            name: this.state.name,
-                            email: this.state.email,
-                            _id: response.data.UserID,
-                            address: []
-                        })
-                        this.props.history.push('/')
-                    }
+            axios.get('https://ipapi.co/json').then(u => {
+                axios.post('http://3.87.22.103:2024/signup', {
+                    email: this.state.email,
+                    pass: this.state.password,
+                    name: this.state.name,
+                    region: u.data.city + ', ' + u.data.country_name
                 })
+                    .then(response => {
+                        if (response.data.message === "200: Registered") {
+                            const { UpdateUserData } = this.context
+                            UpdateUserData({
+                                name: this.state.name,
+                                email: this.state.email,
+                                _id: response.data.UserID,
+                                address: [],
+                                region:response.data.region,
+                            })
+                            this.props.history.push('/')
+                        }
+                    })
+            })
         }
     }
 

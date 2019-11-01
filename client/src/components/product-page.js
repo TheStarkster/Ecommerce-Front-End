@@ -80,7 +80,7 @@ export default class ProductPage extends Component {
     }
     RenderCartItems = () => {
         this.CartItems = []
-        const { CartItems } = this.context
+        const { CartItems, RemoveFromCart } = this.context
         if (CartItems !== undefined) {
             CartItems.forEach(element => {
                 this.CartItems.push(
@@ -91,7 +91,10 @@ export default class ProductPage extends Component {
                                 <h6>{element.ProductName}</h6>
                                 <h6>Rs.{element.ProductPrice}</h6>
                                 <h6>Qty {element.ProductQty}</h6>
-                                <h6 className="Remove-Cart-Item">Remove Item</h6>
+                                <h6 className="Remove-Cart-Item" onClick={() => {
+                                    document.getElementById('Cart-Loader').style.opacity = 1
+                                    RemoveFromCart(element)
+                                }} style={{ color: 'red' }}>Remove Item</h6>
                             </div>
                         </div>
                     </li>
@@ -119,9 +122,9 @@ export default class ProductPage extends Component {
                         </div>
                     </div>
                     <div className="Qty-Container-Root">
-                        <div onClick={() => this.setState({qty: this.state.qty === 1 ? 1 : parseFloat(this.state.qty) - 1})}>-</div>
+                        <div onClick={() => this.setState({ qty: this.state.qty === 1 ? 1 : parseFloat(this.state.qty) - 1 })}>-</div>
                         {this.state.qty}
-                        <div onClick={() => this.setState({qty:parseFloat(this.state.qty) + 1})}>+</div>
+                        <div onClick={() => this.setState({ qty: parseFloat(this.state.qty) + 1 })}>+</div>
                     </div>
                     <button>Buy Now</button>
                     <button onClick={() => {
@@ -149,7 +152,12 @@ export default class ProductPage extends Component {
                 </div>
                 <div className="mobile-cart-expanded">
                     <img src={require('../dist/assets/icons/icons8-delete-50.png')} className="Mobile-Cart-Close" alt="close" onClick={() => removeClass(document.getElementsByClassName('mobile-cart-expanded')[0], 'show')} />
-                    <h2>Cart Items</h2>
+                    <h2 className="cart-heading">
+                        Cart Items
+                        <div className="Loader" id="Cart-Loader">
+                            <img src={require('../dist/assets/animation/cartspinner.gif')} alt="spinner"></img>
+                        </div>
+                    </h2>
                     <div className="ul-container">
                         <ul>
                             {this.RenderCartItems()}

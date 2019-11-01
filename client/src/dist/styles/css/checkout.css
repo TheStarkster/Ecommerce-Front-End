@@ -1,4 +1,4 @@
-.Checkout-Root{
+.Checkout-Root {
     position: relative;
     width: 90%;
     display: flex;
@@ -8,33 +8,41 @@
     padding: 14px;
     padding-top: 64px;
 }
-.Order-Detail-Root>ul{
+
+.Order-Detail-Root>ul {
     list-style-type: none;
     padding-left: 0px;
 }
-.dark{
+
+.dark {
     background-color: rgb(199, 199, 199) !important;
 }
-.Address-Details{
+
+.Address-Details {
     display: flex;
     list-style-type: none;
     padding-left: 0px;
 }
-.Address-Details{
+
+.Address-Details {
     font-size: 14px;
 }
-.Address-Details>div{
+
+.Address-Details>div {
     margin: 12px;
 }
-.low{
+
+.low {
     color: grey;
 }
-.bg-green{
+
+.bg-green {
     background-color: #18c0c926;
     padding-bottom: 18px;
     border-radius: 5px;
 }
-.Add-Address-Btn{
+
+.Add-Address-Btn {
     width: 100%;
     background-color: #f57c00;
     color: white;
@@ -44,7 +52,8 @@
     border-radius: 5px;
     border: none;
 }
-.Save-Address-Btn,.Payment-Btn{
+
+.Save-Address-Btn, .Payment-Btn {
     width: 90%;
     background-color: #2d8d92;
     color: white;
@@ -55,8 +64,13 @@
     border: none;
     margin: 18px;
 }
-.Payment-Btn{
+
+.Payment-Btn {
     background-color: rgb(33, 180, 33);
     margin: 0px;
     width: 100%;
+}
+
+.Payment-Btn:disabled {
+    background-color: rgb(147, 185, 147);
 }

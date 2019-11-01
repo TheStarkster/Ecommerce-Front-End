@@ -12,6 +12,7 @@ export default class Checkout extends Component {
                 <CartContext.Consumer>{(cartContext) => {
                     const { CartItems } = cartContext
                     const { UserData, UpdateUserData } = userContext
+                    var NewOrders = UserData.orders !== undefined ? UserData.orders : []
                     this.CalculateSubtotal = (CartItems) => {
                         var total = 0;
                         CartItems.forEach(element => {
@@ -23,19 +24,38 @@ export default class Checkout extends Component {
                     this.RequestOrder = () => {
                         Axios.post('http://3.87.22.103:2024/api/razorpay/create-order', { amount: parseFloat(this.CalculateSubtotal(CartItems)) * 100, receipt: "gurkaran_order_54654" })
                             .then(response => {
+                                console.log(response)
                                 this.setState({
                                     orderID: response.data.id
                                 })
+                                NewOrders.push(CartItems)
+                                var NewUserObject = UserData
+                                if (NewUserObject.orders === undefined) {
+                                    NewUserObject.orders = []
+                                    NewUserObject.orders.push(NewOrders)
+                                } else {
+                                    NewUserObject.orders.push(NewOrders)
+                                }
+                                UpdateUserData(NewUserObject)
                                 var options = {
                                     "key_id": "rzp_test_hcBEyLK2rKpWkS",
                                     "key_secret": "AilD2hmREnc2HEDIuIBYzu6O",
                                     "amount": 50 * 100,
                                     "currency": "INR",
                                     "name": "DentalStall",
-                                    "description": UserData.name,
                                     "order_id": this.state.orderID,
                                     handler: function (response) {
-                                        alert(response.razorpay_payment_id);
+                                        Axios.post('http://3.87.22.103:2024/api/razorpay/check-payment', {
+                                            paymentId: response.razorpay_payment_id,
+                                            text: {
+                                                CartItems: CartItems,
+                                            },
+                                            userID: UserData._id,
+                                            orders: NewOrders
+                                        })
+                                            .then(u => {
+                                                console.log(u)
+                                            })
                                     },
                                     "prefill": {
                                         "name": UserData.name,
@@ -70,6 +90,9 @@ export default class Checkout extends Component {
                             )
                         })
                         return this.CartItem
+                    }
+                    this.SaveOrders = () => {
+
                     }
                     this.SaveAddress = () => {
                         var NewUserObject = UserData
@@ -182,7 +205,15 @@ export default class Checkout extends Component {
                                 <div className="Order-Payment-Root">
                                     <h4>PAYMENTS</h4>
                                     <div className="hr dark"></div>
-                                    <button className="Payment-Btn" onClick={() => { this.RequestOrder() }}>Pay Now</button>
+                                    {
+                                        UserData.address === undefined ?
+                                            <button className="Payment-Btn" disabled>Pay Now</button>
+                                            :
+                                            UserData.address.length === 0 ?
+                                                <button className="Payment-Btn" disabled>Pay Now</button>
+                                                :
+                                                <button className="Payment-Btn" onClick={() => { this.RequestOrder() }}>Pay Now</button>
+                                    }
                                 </div>
                             </div>
                             <Footer></Footer>
