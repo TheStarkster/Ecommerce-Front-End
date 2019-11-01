@@ -40,7 +40,8 @@ class Register extends Component {
                                 email: this.state.email,
                                 _id: response.data.UserID,
                                 address: [],
-                                region:response.data.region,
+                                region: u.data.city + ', ' + u.data.country_name,
+                                wishlist:[]
                             })
                             this.props.history.push('/')
                         }

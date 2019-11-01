@@ -103,6 +103,30 @@ export default class ProductPage extends Component {
         }
         return this.CartItems
     }
+    UpdateWishlist() {
+        // const { UserData } = this.context
+        // UserData.wishlist.push({
+        //     ProductID: this.props.location.state.data.ProductID,
+        //     ProductName: this.props.location.state.data.ProductName,
+        //     ProductImage: this.props.location.state.data.ProductImage,
+        //     ProductPrice: this.props.location.state.data.ProductPrice,
+        //     ProductQty: this.state.qty
+        // })
+        var user = JSON.parse(localStorage.getItem('user'))
+        user.wishlist.push({
+                ProductID: this.props.location.state.data.ProductID,
+                ProductName: this.props.location.state.data.ProductName,
+                ProductImage: this.props.location.state.data.ProductImage,
+                ProductPrice: this.props.location.state.data.ProductPrice,
+                ProductQty: this.state.qty
+            })
+            console.log(user)
+        // localStorage.setItem('user',JSON.stringify())
+        axios.post('http://3.87.22.103:2024/update-wishlist', { id:user._id,wishlist: user.wishlist })
+            .then(u => {
+                console.log(u)
+            })
+    }
     render() {
         const { CartItems } = this.context
         return (
@@ -132,7 +156,7 @@ export default class ProductPage extends Component {
                             this.Update_Cart() :
                             this.RedirectTo('/login')
                     }}>Add To Cart</button>
-                    <button>Add To Wishlist</button>
+                    <button onClick={() => this.UpdateWishlist()}>Add To Wishlist</button>
                     <div className="Primary-Features">
                         <div className="h4">Primary Features</div>
                         <div className="Feature-Root">
