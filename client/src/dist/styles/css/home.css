@@ -22,19 +22,22 @@
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(90, 87, 87);
 }
-.mobile-cart-expanded>h2{
-    margin-left:38px;
+
+.mobile-cart-expanded>h2 {
+    margin-left: 38px;
 }
-.show{
+
+.show {
     opacity: 1 !important;
     transform: scale(1) !important;
-    z-index:  9999 !important;
+    z-index: 9999 !important;
 }
-.mobile-cart-expanded{
+
+.mobile-cart-expanded {
     position: fixed;
     opacity: 0;
-    top:0;
-    left:0;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     color: rgb(36, 36, 36);
@@ -42,17 +45,20 @@
     background-color: #18c0c9;
     transform: scale(.9);
     transition: 0.2s;
-    z-index:  -1;
+    z-index: -1;
 }
-.cart-item{
+
+.cart-item {
     display: flex;
     display: -webkit-flex;
     margin-bottom: 12px;
 }
-.cart-item>img{
+
+.cart-item>img {
     margin-right: 12px;
 }
-.cart-item-details>h6{
+
+.cart-item-details>h6 {
     margin: 0;
     width: 154px;
     white-space: nowrap;
@@ -60,86 +66,105 @@
     white-space: nowrap;
     overflow: hidden;
 }
-.cart-total-container{
+
+.cart-total-container {
     display: flex;
     display: -webkit-flex;
     flex-direction: column;
-    padding:8px;
+    padding: 8px;
 }
-#Cart-Loader{
+
+#Cart-Loader {
     opacity: 0;
 }
-.cart-heading{
+
+.cart-heading {
     display: flex;
     display: -webkit-flex;
     align-items: center;
 }
-.Loader{
+
+.Loader {
     position: relative;
 }
-.Loader>img{
+
+.Loader>img {
     width: 40px;
 }
-.row{
+
+.row {
     display: flex;
     display: -webkit-flex;
     flex-direction: row;
-    margin-top:8px;
+    margin-top: 8px;
 }
-.row>h6,.row>h4{
-    margin:0px;
+
+.row>h6, .row>h4 {
+    margin: 0px;
 }
-.row>h6{
-    flex:1;
+
+.row>h6 {
+    flex: 1;
     padding-left: 34px;
 }
-.row>h4{
+
+.row>h4 {
     padding-right: 34px;
 }
-.cart-item-details{
-    margin-top:4px;
+
+.cart-item-details {
+    margin-top: 4px;
 }
-.mobile-cart-expanded>div>ul{
+
+.mobile-cart-expanded>div>ul {
     list-style-type: none;
 }
-.Mobile-Cart-Close{
+
+.Mobile-Cart-Close {
     filter: brightness(0) invert(1);
-    padding:8px;
+    padding: 8px;
     width: 40px;
     position: absolute;
-    top:0;
+    top: 0;
     right: 0;
 }
-.CheckoutBtn-Container>button{
+
+.CheckoutBtn-Container>button {
     width: 100%;
     border: none;
     background-color: #3bba3b;
     color: white;
     font-size: 14px;
     font-family: 'Quicksand-Regular';
-    padding:12px;
+    padding: 12px;
     border-radius: 5px;
     outline: none;
 }
-.Add-Address-Root{
+
+.Add-Address-Root {
     opacity: 0;
 }
-.show-add-address{
+
+.show-add-address {
     opacity: 1;
 }
-.CheckoutBtn-Container{
-    padding:12px;
-    padding-left:18px;
-    padding-right:18px;
+
+.CheckoutBtn-Container {
+    padding: 12px;
+    padding-left: 18px;
+    padding-right: 18px;
 }
-.mobile-cart-expanded>div{
+
+.mobile-cart-expanded>div {
     height: 62%;
     overflow-y: scroll;
 }
-.cart-product-image{
+
+.cart-product-image {
     width: 80px;
     height: 80px;
 }
+
 .mobile-cart {
     display: flex;
     display: -webkit-flex;
@@ -198,6 +223,71 @@
     font-family: 'Ainslie';
     font-size: 36px;
     color: #3a3a3a;
+}
+
+.Qty-div {
+    display: flex;
+    display: -webkit-flex;
+}
+
+.Qty-div>h6 {
+    margin: 0;
+}
+
+.Qty-div>h6:nth-child(2) {
+    background-color: #ffc107;
+    margin-left: 24px;
+    padding: 2px;
+    margin-bottom: 8px;
+}
+
+.Edit-Qty-Root {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(224, 224, 224);
+    border-radius: 8px;
+    width: 68%;
+    height: 20% !important;
+}
+
+.Edit-Qty-Root {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-shadow:0 0 30px rgba(0, 0, 0, 0.4);
+}
+
+.Edit-Qty-Root>div {
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    justify-content: center;
+}
+.Edit-Qty-Root>button{
+    color: white;
+    background-color: #3d5464;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    padding: 12px;
+    width: 90%;
+}
+.Edit-Qty-Root>button:hover{
+    box-shadow:0 0 30px rgba(0, 0, 0, 0.4);
+}
+.Edit-Qty-Root>div>div{
+    font-size: 18px;
+    color: white;
+    padding: 8px;
+    padding-right: 14px;
+    padding-left: 14px;
+    background-color: #3d5464;
+    border-radius: 100px;
+    margin: 14px;
 }
 
 @media (min-width:425px) and (max-width:768px) {

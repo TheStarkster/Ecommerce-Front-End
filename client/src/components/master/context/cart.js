@@ -66,11 +66,12 @@ export default class Cart extends Component {
                     })
                         .then(() => {
                             localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
-                            var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
-                            addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
-                            setTimeout((params) => {
-                                removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
-                            }, 2000)
+                            // var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
+                            // addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                            // setTimeout((params) => {
+                            //     removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                            // }, 2000)
+                            alert("Product Added To Cart!")
                         })
                 })
             } else {
@@ -89,13 +90,16 @@ export default class Cart extends Component {
                         })
                             .then(() => {
                                 localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
-                                var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
-                                addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
-                                setTimeout((params) => {
-                                    removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
-                                }, 2000)
+                                // var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
+                                // addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                                // setTimeout((params) => {
+                                //     removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                                // }, 2000)
+                                alert("Product Added To Cart!")
                             })
                     })
+                }else{
+                    alert("Already in Cart!")
                 }
             }
         }

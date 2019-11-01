@@ -18,6 +18,7 @@ export default class User extends Component {
             })
         }
         this.componentWillMount = () => {
+            console.log(this.state)
             if (localStorage.getItem('user')) {
                 this.setState({
                     UserData: JSON.parse(localStorage.getItem('user'))
