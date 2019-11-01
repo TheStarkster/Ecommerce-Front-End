@@ -125,6 +125,7 @@ export default class ProductPage extends Component {
         axios.post('http://3.87.22.103:2024/update-wishlist', { id:user._id,wishlist: user.wishlist })
             .then(u => {
                 console.log(u)
+                alert("Product Added To Wishlist")
             })
     }
     render() {
