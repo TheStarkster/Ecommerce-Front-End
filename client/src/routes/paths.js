@@ -17,7 +17,7 @@ class Paths extends Component {
             <div>
                 <Switch>
                     <User>
-                        <Navbar></Navbar>
+                        {/* <Navbar></Navbar> */}
                         <Route exact path="/login" component={Login} />
                         <Route exact path="/login/*" component={Login} />
                         <Route exact path="/SignIn" component={Login} />

@@ -6,6 +6,7 @@ export default class Card extends Component {
     static contextType = UserContext
     render() {
         const { UserData } = this.context
+        console.log(UserData)
         return (
             <div className="card" onClick={() => {
                 this.props.history.push({
@@ -23,7 +24,7 @@ export default class Card extends Component {
                             ProductRDL: this.props.ProductRDL,
                             ProductTags: this.props.ProductTags,
                             ProductID: this.props.ProductID,
-                            UserLoggedIn:UserData === {} ? false : true
+                            UserLoggedIn:UserData === {} || undefined ? false : true
                         }
                     }
                 })

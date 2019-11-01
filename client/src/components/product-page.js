@@ -104,32 +104,27 @@ export default class ProductPage extends Component {
         return this.CartItems
     }
     UpdateWishlist() {
-        // const { UserData } = this.context
-        // UserData.wishlist.push({
-        //     ProductID: this.props.location.state.data.ProductID,
-        //     ProductName: this.props.location.state.data.ProductName,
-        //     ProductImage: this.props.location.state.data.ProductImage,
-        //     ProductPrice: this.props.location.state.data.ProductPrice,
-        //     ProductQty: this.state.qty
-        // })
         var user = JSON.parse(localStorage.getItem('user'))
         user.wishlist.push({
-                ProductID: this.props.location.state.data.ProductID,
-                ProductName: this.props.location.state.data.ProductName,
-                ProductImage: this.props.location.state.data.ProductImage,
-                ProductPrice: this.props.location.state.data.ProductPrice,
-                ProductQty: this.state.qty
-            })
-            console.log(user)
-        // localStorage.setItem('user',JSON.stringify())
-        axios.post('http://3.87.22.103:2024/update-wishlist', { id:user._id,wishlist: user.wishlist })
+            ProductID: this.props.location.state.data.ProductID,
+            ProductName: this.props.location.state.data.ProductName,
+            ProductImage: this.props.location.state.data.ProductImage,
+            ProductPrice: this.props.location.state.data.ProductPrice,
+            ProductQty: this.state.qty
+        })
+        console.log(user)
+        axios.post('http://3.87.22.103:2024/update-wishlist', { id: user._id, wishlist: user.wishlist })
             .then(u => {
                 console.log(u)
                 alert("Product Added To Wishlist")
             })
     }
+    BuyNow(){
+        
+    }
     render() {
         const { CartItems } = this.context
+        console.log(this.props.location.state.data)
         return (
             <div>
                 <div className="Product-Page-Root">
@@ -151,13 +146,23 @@ export default class ProductPage extends Component {
                         {this.state.qty}
                         <div onClick={() => this.setState({ qty: parseFloat(this.state.qty) + 1 })}>+</div>
                     </div>
-                    <button>Buy Now</button>
+                    <button onClick={() => {
+                        this.props.location.state.data.UserLoggedIn ?
+                            this.BuyNow()
+                            :
+                            this.RedirectTo('/login')
+                    }}>Buy Now</button>
                     <button onClick={() => {
                         this.props.location.state.data.UserLoggedIn ?
                             this.Update_Cart() :
                             this.RedirectTo('/login')
                     }}>Add To Cart</button>
-                    <button onClick={() => this.UpdateWishlist()}>Add To Wishlist</button>
+                    <button onClick={() => {
+                        this.props.location.state.data.UserLoggedIn ?
+                            this.UpdateWishlist()
+                            :
+                            this.RedirectTo('/login')
+                    }}>Add To Wishlist</button>
                     <div className="Primary-Features">
                         <div className="h4">Primary Features</div>
                         <div className="Feature-Root">

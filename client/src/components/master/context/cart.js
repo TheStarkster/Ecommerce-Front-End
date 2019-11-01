@@ -24,19 +24,19 @@ export default class Cart extends Component {
                     })
                 })
         }
-        this.componentWillUpdate = () => {
-            const { UserData } = this.context
-            axios.post('http://3.87.22.103:2024/user/get-cart', {
-                id: UserData._id
-            })
-                .then(response => {
-                    this.setState({
-                        CartItems: response.data.cart
-                    }, () => {
-                        localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
-                    })
-                })
-        }
+        // this.componentWillUpdate = () => {
+        //     const { UserData } = this.context
+        //     axios.post('http://3.87.22.103:2024/user/get-cart', {
+        //         id: UserData._id
+        //     })
+        //         .then(response => {
+        //             this.setState({
+        //                 CartItems: response.data.cart
+        //             }, () => {
+        //                 localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
+        //             })
+        //         })
+        // }
         this.RemoveFromCart = (Product) => {
             const { UserData } = this.context
             axios.post('http://3.87.22.103:2024/user/remove-from-cart', {
