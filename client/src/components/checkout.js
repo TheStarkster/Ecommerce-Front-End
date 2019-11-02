@@ -175,6 +175,10 @@ export default class Checkout extends Component {
                                         }
                                     </ul>
                                 </div>
+                                <div className="cart-total-container promocode">
+                                    <input type="text" placeholder="Apply Promocode" id="txtPromocode"></input>
+                                    <button>Apply</button>
+                                </div>
                                 <div className="cart-total-container bg-green">
                                     <div className="row">
                                         <h6>Sub-Total</h6>

@@ -74,3 +74,24 @@
 .Payment-Btn:disabled {
     background-color: rgb(147, 185, 147);
 }
+.promocode{
+    flex-direction: row;
+}
+.promocode>button{
+    background-color: #28ae28;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    margin-left: 12px;
+    padding:8px;
+}
+.promocode>input{
+    flex: 1;
+    outline: none;
+    border: none;
+    font-size: 16px;
+    padding-left: 12px;
+    padding-bottom: 6px;
+    font-family: 'Quicksand-Regular';
+    border-bottom: 1.5px solid #6dc125;
+}
