@@ -16,6 +16,7 @@ export default class ProductPage extends Component {
             SimilarProducts: [],
             qty: 1,
             EditQty: 1,
+            EditProduct: {},
             EditQtyConatainer: false
         }
         this.componentWillMount = () => {
@@ -40,7 +41,7 @@ export default class ProductPage extends Component {
         return (
             <UserContext.Consumer>{(userContext) => (
                 <CartContext.Consumer>{(cartContext) => {
-                    const { RemoveFromCart, UpdateCart, CartItems } = cartContext
+                    const { RemoveFromCart, UpdateCart, CartItems, UpdateQty } = cartContext
                     const { UserData, UpdateUserData } = userContext
 
                     this.RenderPrimaryFeatures = () => {
@@ -82,8 +83,7 @@ export default class ProductPage extends Component {
                         var total = 0;
                         if (CartitemsParam !== undefined) {
                             CartitemsParam.forEach(element => {
-                                total = total + parseFloat(element.ProductPrice)
-                                total = total * parseFloat(element.ProductQty)
+                                total = total + (parseFloat(element.ProductPrice) * parseFloat(element.ProductQty))
                             });
                         }
                         return total
@@ -100,7 +100,7 @@ export default class ProductPage extends Component {
                                                 <h6>{element.ProductName}</h6>
                                                 <h6>Rs.{element.ProductPrice}</h6>
                                                 <div className="Cart-Qty"></div>
-                                                <div className="Qty-div"><h6>Qty {element.ProductQty}</h6><h6 onClick={() => this.setState({ EditQtyConatainer: true })}>Edit</h6></div>
+                                                <div className="Qty-div"><h6>Qty {element.ProductQty}</h6><h6 onClick={() => this.setState({ EditQtyConatainer: true, EditProduct: element })}>Edit</h6></div>
                                                 <h6 className="Remove-Cart-Item" onClick={() => {
                                                     document.getElementById('Cart-Loader').style.opacity = 1
                                                     RemoveFromCart(element)
@@ -137,9 +137,27 @@ export default class ProductPage extends Component {
 
                     }
                     this.BuyNow = () => {
-
+                        this.props.history.push({
+                            pathname: '/checkout',
+                            state: {
+                                data: {
+                                    ProductName: this.props.location.state.data.ProductName,
+                                    ProductImage: this.props.location.state.data.ProductImage,
+                                    ProductPrice: this.props.location.state.data.ProductPrice,
+                                    ProductQty: this.state.qty
+                                }
+                            }
+                        })
                     }
-
+                    this.UpdateCartItemQty = () => {
+                        this.state.EditProduct.ProductQty = this.state.EditQty
+                        UpdateQty(this.state.EditProduct)
+                        this.setState({
+                            EditQtyConatainer: false,
+                            EditQty: 1,
+                            EditProduct: {}
+                        })
+                    }
                     return (
                         <div>
                             <div className="Product-Page-Root">
@@ -200,11 +218,11 @@ export default class ProductPage extends Component {
                                     this.state.EditQtyConatainer ?
                                         <div className="Edit-Qty-Root">
                                             <div>
-                                                <div className="cart-qty-minus">-</div>
+                                                <div className="cart-qty-minus" onClick={() => this.setState({ EditQty: this.state.EditQty === 1 ? 1 : parseFloat(this.state.EditQty) - 1 })}>-</div>
                                                 {this.state.EditQty}
-                                                <div className="cart-qty-plus">+</div>
+                                                <div className="cart-qty-plus" onClick={() => this.setState({ EditQty: this.state.EditQty + 1 })}>+</div>
                                             </div>
-                                            <button>Save</button>
+                                            <button onClick={() => this.UpdateCartItemQty()}>Save</button>
                                         </div>
                                         :
                                         null

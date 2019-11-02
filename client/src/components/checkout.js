@@ -22,21 +22,17 @@ export default class Checkout extends Component {
                         return total
                     }
                     this.RequestOrder = () => {
-                        Axios.post('http://3.87.22.103:2024/api/razorpay/create-order', { amount: parseFloat(this.CalculateSubtotal(CartItems)) * 100, receipt: "gurkaran_order_54654" })
+                        let amount
+                        if (this.props.location.state === undefined) {
+                            amount = parseFloat(this.CalculateSubtotal(CartItems)) * 100
+                        } else {
+                            amount = parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty) * 100
+                        }
+                        Axios.post('http://3.87.22.103:2024/api/razorpay/create-order', { amount: amount, receipt: "gurkaran_order_54654" })
                             .then(response => {
-                                console.log(response)
                                 this.setState({
                                     orderID: response.data.id
                                 })
-                                NewOrders.push(CartItems)
-                                var NewUserObject = UserData
-                                if (NewUserObject.orders === undefined) {
-                                    NewUserObject.orders = []
-                                    NewUserObject.orders.push(NewOrders)
-                                } else {
-                                    NewUserObject.orders.push(NewOrders)
-                                }
-                                UpdateUserData(NewUserObject)
                                 var options = {
                                     "key_id": "rzp_test_hcBEyLK2rKpWkS",
                                     "key_secret": "AilD2hmREnc2HEDIuIBYzu6O",
@@ -45,6 +41,16 @@ export default class Checkout extends Component {
                                     "name": "DentalStall",
                                     "order_id": this.state.orderID,
                                     handler: function (response) {
+                                        NewOrders.push(CartItems)
+                                        var NewUserObject = UserData
+                                        if (NewUserObject.orders === undefined) {
+                                            NewUserObject.orders = []
+                                            NewUserObject.orders.push(NewOrders)
+                                        } else {
+                                            NewUserObject.orders.push(NewOrders)
+                                        }
+                                        UpdateUserData(NewUserObject)
+
                                         Axios.post('http://3.87.22.103:2024/api/razorpay/check-payment', {
                                             paymentId: response.razorpay_payment_id,
                                             text: {
@@ -83,7 +89,6 @@ export default class Checkout extends Component {
                                             <h6>{element.ProductName}</h6>
                                             <h6>Rs.{element.ProductPrice}</h6>
                                             <h6>Qty {element.ProductQty}</h6>
-                                            <h6 className="Remove-Cart-Item">Remove Item</h6>
                                         </div>
                                     </div>
                                 </li>
@@ -121,6 +126,20 @@ export default class Checkout extends Component {
                                 removeClass(document.getElementsByClassName('Add-Address-Root')[0], 'show-add-address')
                             })
                     }
+                    this.RenderBuyNowItem = () => {
+                        return (
+                            <li>
+                                <div className="cart-item">
+                                    <img src={this.props.location.state.data.ProductImage} alt="Cart-Product" className="cart-product-image" />
+                                    <div className="cart-item-details">
+                                        <h6>{this.props.location.state.data.ProductName}</h6>
+                                        <h6>Rs.{this.props.location.state.data.ProductPrice}</h6>
+                                        <h6>Qty {this.props.location.state.data.ProductQty}</h6>
+                                    </div>
+                                </div>
+                            </li>
+                        )
+                    }
                     return (
                         <div className="Checkout-Root-Main">
                             <div className="Add-Address-Root">
@@ -149,13 +168,22 @@ export default class Checkout extends Component {
                                     <h4>YOUR ORDER</h4>
                                     <div className="hr dark"></div>
                                     <ul>
-                                        {this.RenderCartItems()}
+                                        {
+                                            this.props.location.state === undefined ?
+                                                this.RenderCartItems() :
+                                                this.RenderBuyNowItem()
+                                        }
                                     </ul>
                                 </div>
                                 <div className="cart-total-container bg-green">
                                     <div className="row">
                                         <h6>Sub-Total</h6>
-                                        <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
+                                        <h4>Rs. {
+                                            this.props.location.state === undefined ?
+                                                this.CalculateSubtotal(CartItems)
+                                                :
+                                                parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty)
+                                        }</h4>
                                     </div>
                                     <div className="row">
                                         <h6>Taxes</h6>
@@ -163,7 +191,12 @@ export default class Checkout extends Component {
                                     </div>
                                     <div className="row">
                                         <h6>Grand-Total</h6>
-                                        <h4>Rs.{this.CalculateSubtotal(CartItems)}</h4>
+                                        <h4>Rs. {
+                                            this.props.location.state === undefined ?
+                                                this.CalculateSubtotal(CartItems)
+                                                :
+                                                parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty)
+                                        }</h4>
                                     </div>
                                 </div>
                                 <div className="Order-Shipping-Root">

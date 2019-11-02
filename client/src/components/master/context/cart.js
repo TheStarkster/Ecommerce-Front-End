@@ -13,30 +13,29 @@ export default class Cart extends Component {
         }
         this.componentWillMount = () => {
             const { UserData } = this.context
-            axios.post('http://3.87.22.103:2024/user/get-cart', {
-                id: UserData._id
-            })
-                .then(response => {
-                    this.setState({
-                        CartItems: response.data.cart
-                    }, () => {
-                        localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
-                    })
+            if (Object.keys(UserData).length !== 0) {
+                axios.post('http://3.87.22.103:2024/user/get-cart', {
+                    id: UserData._id
                 })
+                    .then(response => {
+                        this.setState({
+                            CartItems: response.data.cart
+                        }, () => {
+                            localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
+                        })
+                    })
+            }
         }
-        // this.componentWillUpdate = () => {
-        //     const { UserData } = this.context
-        //     axios.post('http://3.87.22.103:2024/user/get-cart', {
-        //         id: UserData._id
-        //     })
-        //         .then(response => {
-        //             this.setState({
-        //                 CartItems: response.data.cart
-        //             }, () => {
-        //                 localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
-        //             })
-        //         })
-        // }
+        this.componentDidUpdate = () => {
+            if (localStorage.getItem('cart') === null) {
+                const { UserData } = this.context
+                this.setState({
+                    CartItems: UserData.cart
+                }, () => {
+                    localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
+                })
+            }
+        }
         this.RemoveFromCart = (Product) => {
             const { UserData } = this.context
             axios.post('http://3.87.22.103:2024/user/remove-from-cart', {
@@ -98,16 +97,37 @@ export default class Cart extends Component {
                                 alert("Product Added To Cart!")
                             })
                     })
-                }else{
+                } else {
                     alert("Already in Cart!")
                 }
             }
+        }
+        this.UpdateQty = (Modified) => {
+            const { UserData } = this.context
+            this.state.CartItems.filter(x => x.ProductID === Modified.ProductID).ProductQty = Modified.ProductQty
+            this.setState({
+                CartItems: this.state.CartItems
+            }, () => {
+                console.log(this.state)
+                axios.post('http://3.87.22.103:2024/user/add-to-cart', {
+                    id: UserData._id,
+                    cart: this.state.CartItems,
+                })
+                    .then(() => {
+                        localStorage.setItem('cart', JSON.stringify(this.state.CartItems))
+                        // var PartialProductRoot = document.getElementsByClassName('Partial-Product-Root')[0]
+                        // addClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                        // setTimeout((params) => {
+                        //     removeClass(PartialProductRoot, 'Show-Partial-Product-Root-Success')
+                        // }, 2000)
+                    })
+            })
         }
     }
 
     render() {
         return (
-            <CartContext.Provider value={{ ...this.state, UpdateCart: this.UpdateCart, RemoveFromCart: this.RemoveFromCart }}>
+            <CartContext.Provider value={{ ...this.state, UpdateCart: this.UpdateCart, RemoveFromCart: this.RemoveFromCart, UpdateQty: this.UpdateQty, SetCart: this.SetCart }}>
                 {this.props.children}
             </CartContext.Provider>
         )

@@ -81,7 +81,7 @@ class Navbar extends Component {
                 <div className="nav-items-root">
                     <ul>
                         <li>
-                            <div className="nav-item-dentalstall" id="nav-item-dentalstall">
+                            <div className="nav-item-dentalstall" id="nav-item-dentalstall" onClick={() => this.props.history.push('/')}>
                                 <div className="nav-dental" id="nav-dental">
                                     Dental
                                 </div>
@@ -90,8 +90,8 @@ class Navbar extends Component {
                                 </div>
                             </div>
                         </li>
-                        <li className="li-desktop" id="li-desktop-1" onClick={() => this.props.history.push('/profile')}>
-                            {UserData.name === undefined ? <div className="nav-auth">Login/Signup</div> : UserData.name}
+                        <li className="li-desktop" id="li-desktop-1" >
+                            {UserData.name === undefined ? <div className="nav-auth" onClick={() => this.props.history.push('/login')}>Login/Signup</div> : <div onClick={() => this.props.history.push('/profile')}>{UserData.name}</div>}
                         </li>
                         <li className="li-desktop" id="li-desktop-2">
                             Deals

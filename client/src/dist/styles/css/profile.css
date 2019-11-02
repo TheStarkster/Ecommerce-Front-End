@@ -110,20 +110,3 @@
         height: 150px;
     }
 }
-.whishlist-item>img{
-    width: 80px;
-    height: 80px;
-}
-.whishlist-item{
-    display: flex;
-    display: -webkit-flex;
-}
-.whishlist-item>div{
-    display: flex;
-    display: -webkit-flex;
-    flex-direction: column;
-}
-.whishlist-item>div>h6{
-    margin: 0px;
-    padding-left: 8px;
-}

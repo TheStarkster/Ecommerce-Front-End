@@ -1,8 +1,10 @@
 import React, { Component, createContext } from 'react'
+// import {CartContext} from './cart'
 // import axios from 'axios'
 
 export const UserContext = createContext()
 export default class User extends Component {
+    // static contextType = this.contextType
     constructor(props) {
         super(props)
         this.state = {
@@ -13,12 +15,10 @@ export default class User extends Component {
                 UserData: UserData
             }, () => {
                 localStorage.removeItem('user')
-                console.log(UserData)
                 localStorage.setItem('user', JSON.stringify(this.state.UserData))
             })
         }
         this.componentWillMount = () => {
-            console.log(this.state)
             if (localStorage.getItem('user')) {
                 this.setState({
                     UserData: JSON.parse(localStorage.getItem('user'))

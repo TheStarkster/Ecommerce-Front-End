@@ -79,3 +79,29 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+.whishlist-item>img{
+    width: 80px;
+    height: 80px;
+}
+.whishlist-item{
+    display: flex;
+    display: -webkit-flex;
+    margin-bottom: 12px;
+    font-family: 'Quicksand-Regular';
+}
+.whishlist-item>div{
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+}
+.whishlist-item>div>h6{
+    margin: 0px;
+    padding-left: 8px;
+}
+.whishlist-item>div>h6:nth-child(1){
+    width: 180px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}

@@ -14,6 +14,9 @@ export default class Home extends Component {
         super(props)
         this.state = {
             ProductsArray: [],
+            EditQty: 1,
+            EditProduct: {},
+            EditQtyConatainer: false
         }
         this.componentWillMount = () => {
             if (localStorage.getItem('to-buy') !== null) {
@@ -51,6 +54,16 @@ export default class Home extends Component {
             }
         }
     }
+    UpdateCartItemQty = () => {
+        const { UpdateQty } = this.context
+        this.state.EditProduct.ProductQty = this.state.EditQty
+        UpdateQty(this.state.EditProduct)
+        this.setState({
+            EditQtyConatainer: false,
+            EditQty: 1,
+            EditProduct: {}
+        })
+    }
     CalculateSubtotal(CartItems) {
         var total = 0;
         if (CartItems !== undefined) {
@@ -63,17 +76,18 @@ export default class Home extends Component {
     }
     RenderCartItems = () => {
         this.CartItems = []
+        this.key = 1
         const { CartItems, RemoveFromCart } = this.context
         if (CartItems !== undefined) {
             CartItems.forEach(element => {
                 this.CartItems.push(
-                    <li>
+                    <li key={this.key}>
                         <div className="cart-item">
                             <img src={element.ProductImage} alt="Cart-Product" className="cart-product-image" />
                             <div className="cart-item-details">
                                 <h6>{element.ProductName}</h6>
                                 <h6>Rs.{element.ProductPrice}</h6>
-                                <h6>Qty {element.ProductQty}</h6>
+                                <div className="Qty-div"><h6>Qty {element.ProductQty}</h6><h6 onClick={() => this.setState({ EditQtyConatainer: true, EditProduct: element })}>Edit</h6></div>
                                 <h6 className="Remove-Cart-Item" onClick={() => {
                                     document.getElementById('Cart-Loader').style.opacity = 1
                                     RemoveFromCart(element)
@@ -82,12 +96,15 @@ export default class Home extends Component {
                         </div>
                     </li>
                 )
+                this.key += 1
             })
         }
         return this.CartItems
     }
+
     RenderProductCards = () => {
         this.ProductCard = []
+        this.key = 1
         this.state.ProductsArray.forEach(element => {
             this.ProductCard.push(
                 <Card ProductName={element.name}
@@ -102,10 +119,12 @@ export default class Home extends Component {
                     ProductTags={element.tags}
                     history={this.props.history}
                     ProductID={element._id}
+                    key={this.key}
                 >
                 </Card>
             )
-        });
+            this.key += 1
+        })
         return this.ProductCard
     }
     render() {
@@ -134,6 +153,19 @@ export default class Home extends Component {
                     {this.RenderProductCards()}
                 </div>
                 <div className="mobile-cart-expanded">
+                    {
+                        this.state.EditQtyConatainer ?
+                            <div className="Edit-Qty-Root">
+                                <div>
+                                    <div className="cart-qty-minus" onClick={() => this.setState({ EditQty: this.state.EditQty === 1 ? 1 : parseFloat(this.state.EditQty) - 1 })}>-</div>
+                                    {this.state.EditQty}
+                                    <div className="cart-qty-plus" onClick={() => this.setState({ EditQty: this.state.EditQty + 1 })}>+</div>
+                                </div>
+                                <button onClick={() => this.UpdateCartItemQty()}>Save</button>
+                            </div>
+                            :
+                            null
+                    }
                     <img src={require('../dist/assets/icons/icons8-delete-50.png')} className="Mobile-Cart-Close" alt="close" onClick={() => removeClass(document.getElementsByClassName('mobile-cart-expanded')[0], 'show')} />
                     <h2 className="cart-heading">
                         Cart Items
