@@ -9,7 +9,7 @@ class ProfileWishlist extends Component {
         const { UserData, UpdateUserData } = this.context
         var user = UserData
         user.wishlist = UserData.wishlist.filter(x => x.ProductID !== item.ProductID)
-        axios.post('http://localhost:2024/update-wishlist', { id: UserData._id, wishlist: user.wishlist })
+        axios.post('http://3.87.22.103:2024/update-wishlist', { id: UserData._id, wishlist: user.wishlist })
             .then(u => {
                 UpdateUserData(user)
                 console.log("wishlist updated")
