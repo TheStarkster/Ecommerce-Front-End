@@ -6,7 +6,7 @@ import ProfileNotification from '../profile-notification'
 import ProfileSettings from '../profile-settings'
 import ProfileWishlist from '../profile-wishlist'
 import ProfilePayments from '../profile-payments'
-import {UserContext} from './context/user'
+import { UserContext } from './context/user'
 
 class Profile extends Component {
     static contextType = UserContext
@@ -77,7 +77,7 @@ class Profile extends Component {
         }
     }
     render() {
-        const {UserData} = this.context
+        const { UserData } = this.context
         return (
             <div className="Profile-Root">
                 {
@@ -105,28 +105,22 @@ class Profile extends Component {
                     </div>
                 </div>
                 <div className="Profile-Option-Card">
-                    <div className="Option-Card" id="Personal" onClick={this.ExpandOption}>
-                        <img src={require('../../dist/assets/icons/icons8-user-64.png')} alt="Option" />
+                    <div className="Option-Card" id="Personal" onClick={this.ExpandOption} style={{ backgroundImage: 'url(' + require('../../dist/assets/icons/icons8-user-64.png') + ')' }}>
                         Personal Settings
                     </div>
-                    <div className="Option-Card" id="Orders" onClick={this.ExpandOption}>
-                        <img src={require('../../dist/assets/icons/icons8-purchase-order-96.png')} alt="Option" />
+                    <div className="Option-Card" id="Orders" onClick={this.ExpandOption} style={{ backgroundImage: 'url(' + require('../../dist/assets/icons/icons8-purchase-order-96.png') + ')' }}>
                         Your Orders
                     </div>
-                    <div className="Option-Card" id="Payments" onClick={this.ExpandOption}>
-                        <img src={require('../../dist/assets/icons/icons8-wallet-96.png')} alt="Option" />
+                    <div className="Option-Card" id="Payments" onClick={this.ExpandOption} style={{ backgroundImage: 'url(' + require('../../dist/assets/icons/icons8-wallet-96.png') + ')' }}>
                         Payments
                     </div>
-                    <div className="Option-Card" id="Wishlist" onClick={this.ExpandOption}>
-                        <img src={require('../../dist/assets/icons/icons8-wish-list-96.png')} alt="Option" />
+                    <div className="Option-Card" id="Wishlist" onClick={this.ExpandOption} style={{ backgroundImage: 'url(' + require('../../dist/assets/icons/icons8-wish-list-96.png') + ')' }}>
                         Wishlist
                     </div>
-                    <div className="Option-Card" id="Notification" onClick={this.ExpandOption}>
-                        <img src={require('../../dist/assets/icons/icons8-notification-96.png')} alt="Option" />
+                    <div className="Option-Card" id="Notification" onClick={this.ExpandOption} style={{ backgroundImage: 'url(' + require('../../dist/assets/icons/icons8-notification-96.png') + ')' }}>
                         Notifications
                     </div>
-                    <div className="Option-Card" id="Settings" onClick={this.ExpandOption}>
-                        <img src={require('../../dist/assets/icons/icons8-settings-96.png')} alt="Option" />
+                    <div className="Option-Card" id="Settings" onClick={this.ExpandOption} style={{ backgroundImage: 'url(' + require('../../dist/assets/icons/icons8-settings-96.png') + ')' }}>
                         Settings
                     </div>
                 </div>
