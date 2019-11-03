@@ -105,7 +105,7 @@ export default class Checkout extends Component {
                         this.setState({
                             promoLoading: true
                         })
-                        Axios.post('http://localhost:2024/user/check-promo', {
+                        Axios.post('http://3.87.22.103:2024/user/check-promo', {
                             id: UserData._id,
                             code: code
                         })
