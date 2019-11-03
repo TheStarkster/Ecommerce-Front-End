@@ -3,7 +3,22 @@
     display: flex;
     display: -webkit-flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
+    font-family: 'Quicksand-Regular';
+}
+
+.SearchBar-Root>input {
+    font-family: 'Quicksand-Regular';
+}
+.SearchBar-Root>input::placeholder {
+    font-size: 14px;
+}
+
+.SearchBar-Root>label {
+    color: #2382cf;
+    padding: 12px;
 }
 
 .Searchbar {
@@ -37,8 +52,8 @@
 @media(max-width:768px) {
     .Searchbar {
         font-size: 18px;
-        padding-left: 62px;
-        width: 67%;
+        padding-left: 52px;
+        width: 70%;
         background-size: 30px 30px;
         background-position: 12px 28px;
     }

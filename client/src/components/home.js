@@ -16,7 +16,8 @@ export default class Home extends Component {
             ProductsArray: [],
             EditQty: 1,
             EditProduct: {},
-            EditQtyConatainer: false
+            EditQtyConatainer: false,
+            SearchResult:[]
         }
         this.componentWillMount = () => {
             if (localStorage.getItem('to-buy') !== null) {
@@ -53,6 +54,11 @@ export default class Home extends Component {
                     })
             }
         }
+    }
+    SetSearchResults = (result) => {
+        this.setState({
+            ProductsArray: result
+        })
     }
     UpdateCartItemQty = () => {
         const { UpdateQty } = this.context
@@ -141,7 +147,7 @@ export default class Home extends Component {
                     </h1>
                 </div>
                 <BrandStrip></BrandStrip>
-                <SearchBar></SearchBar>
+                <SearchBar trigger={this.SetSearchResults}></SearchBar>
                 <h2 style={{
                     position: 'absolute',
                     left: '50%',
