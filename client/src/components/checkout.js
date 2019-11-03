@@ -6,6 +6,12 @@ import Footer from '../components/master/footer'
 import { addClass, removeClass } from '../functions/functions'
 import Axios from 'axios'
 export default class Checkout extends Component {
+    state = {
+        hasPromo:false,
+        promo: 0,
+        promoMessage: "",
+        promoLoading: false
+    }
     render() {
         return (
             <UserContext.Consumer>{(userContext) => (
@@ -13,18 +19,17 @@ export default class Checkout extends Component {
                     const { CartItems } = cartContext
                     const { UserData, UpdateUserData } = userContext
                     var NewOrders = UserData.orders !== undefined ? UserData.orders : []
-                    this.CalculateSubtotal = (CartItems) => {
+                    this.CalculateSubtotal = (CartItems, promo) => {
                         var total = 0;
                         CartItems.forEach(element => {
-                            total = total + parseFloat(element.ProductPrice)
-                            total = total * parseFloat(element.ProductQty)
-                        });
-                        return total
+                            total += parseFloat(element.ProductPrice) * parseFloat(element.ProductQty)
+                        })
+                        return total - (total * parseFloat(promo)) / 100
                     }
                     this.RequestOrder = () => {
                         let amount
                         if (this.props.location.state === undefined) {
-                            amount = parseFloat(this.CalculateSubtotal(CartItems)) * 100
+                            amount = parseFloat(this.CalculateSubtotal(CartItems, this.state.promo)) * 100
                         } else {
                             amount = parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty) * 100
                         }
@@ -96,8 +101,30 @@ export default class Checkout extends Component {
                         })
                         return this.CartItem
                     }
-                    this.SaveOrders = () => {
-
+                    this.ApplyPromo = (code) => {
+                        this.setState({
+                            promoLoading: true
+                        })
+                        Axios.post('http://localhost:2024/user/check-promo', {
+                            id: UserData._id,
+                            code: code
+                        })
+                            .then(response => {
+                                this.setState({
+                                    promoLoading: false
+                                })
+                                if (response.data.message === undefined) {
+                                    this.setState({
+                                        promo: parseFloat(response.data.discount),
+                                        promoMessage:"Applied!",
+                                        hasPromo:true
+                                    })
+                                } else {
+                                    this.setState({
+                                        promoMessage: response.data.message
+                                    })
+                                }
+                            })
                     }
                     this.SaveAddress = () => {
                         var NewUserObject = UserData
@@ -142,6 +169,12 @@ export default class Checkout extends Component {
                     }
                     return (
                         <div className="Checkout-Root-Main">
+                            {this.state.promoLoading ?
+                                <div className="Promo-Loading">
+                                    <img src={require('../dist/assets/animation/cartspinner.gif')} alt="checkout spinner"></img>
+                                </div>
+                                :
+                                null}
                             <div className="Add-Address-Root">
                                 <div className="Option-Expand-Root">
                                     <h2>Add Address</h2>
@@ -177,14 +210,15 @@ export default class Checkout extends Component {
                                 </div>
                                 <div className="cart-total-container promocode">
                                     <input type="text" placeholder="Apply Promocode" id="txtPromocode"></input>
-                                    <button>Apply</button>
+                                    <button onClick={() => this.ApplyPromo(document.getElementById('txtPromocode').value)}>Apply</button>
                                 </div>
+                                {this.state.promoMessage === "" ? null : <label style={{ color: '#2c5e2c', fontSize: '14px', marginLeft: '18px', marginBottom: '12px' }}>{this.state.promoMessage}</label>}
                                 <div className="cart-total-container bg-green">
                                     <div className="row">
                                         <h6>Sub-Total</h6>
                                         <h4>Rs. {
                                             this.props.location.state === undefined ?
-                                                this.CalculateSubtotal(CartItems)
+                                                this.CalculateSubtotal(CartItems, this.state.promo)
                                                 :
                                                 parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty)
                                         }</h4>
@@ -197,7 +231,7 @@ export default class Checkout extends Component {
                                         <h6>Grand-Total</h6>
                                         <h4>Rs. {
                                             this.props.location.state === undefined ?
-                                                this.CalculateSubtotal(CartItems)
+                                                this.CalculateSubtotal(CartItems, this.state.promo)
                                                 :
                                                 parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty)
                                         }</h4>
