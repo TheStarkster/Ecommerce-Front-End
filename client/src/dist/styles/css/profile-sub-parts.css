@@ -105,3 +105,17 @@
     white-space: nowrap;
     overflow: hidden;
 }
+.UpdateBtn{
+    width: 80%;
+    padding: 8px;
+    margin: 12px;
+    border-radius: 4px;
+    border: none;
+    background-color: #146f74;
+    color: white;
+}
+.Update-Address-Container{
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 100%;
+}

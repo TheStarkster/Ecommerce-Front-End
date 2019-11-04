@@ -101,7 +101,7 @@ class Profile extends Component {
                     </div>
                     <div>
                         <img src={require('../../dist/assets/icons/icons8-phone-96.png')} alt="Contact" />
-                        Not Provided
+                        {UserData.contact === undefined ? "Not Provided" : UserData.contact}
                     </div>
                 </div>
                 <div className="Profile-Option-Card">

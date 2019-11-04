@@ -11,18 +11,28 @@ class SearchBar extends Component {
         }
     }
     getItems = (event) => {
-        console.log(event.target.value)
         this.setState({
             fetching: true
         })
+        if (event.target.value === "") {
+            Axios.get('http://3.87.22.103:2024/User-fetch-products')
+                .then(response => {
+                    this.props.trigger(response.data.products)
+                    setTimeout(() => {
+                        this.setState({
+                            fetching: false
+                        })
+                    }, 1200)
+                })
+        }
         Axios.get('http://3.87.22.103:2024/find-product/' + event.target.value)
             .then(response => {
                 this.props.trigger(response.data)
-                setTimeout(()=>{
+                setTimeout(() => {
                     this.setState({
                         fetching: false
                     })
-                },1200)
+                }, 1200)
             })
     }
     render() {

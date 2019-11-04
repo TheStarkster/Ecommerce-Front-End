@@ -128,7 +128,7 @@ export default class ProductPage extends Component {
                                 ProductPrice: this.props.location.state.data.ProductPrice,
                                 ProductQty: this.state.qty
                             })
-                            axios.post('http://localhost:2024/update-wishlist', { id: user._id, wishlist: user.wishlist })
+                            axios.post('http://3.87.22.103:2024/update-wishlist', { id: user._id, wishlist: user.wishlist })
                                 .then(u => {
                                     UpdateUserData(user)
                                     alert("Product Added To Wishlist")
