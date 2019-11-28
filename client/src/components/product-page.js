@@ -20,7 +20,7 @@ export default class ProductPage extends Component {
             EditQtyConatainer: false
         }
         this.componentWillMount = () => {
-            axios.post('http://3.87.22.103:2024/similar-product', {
+            axios.post('http://3.19.58.80:2024/similar-product', {
                 tags: this.props.location.state.data.ProductTags
             })
                 .then(response => {
@@ -128,7 +128,7 @@ export default class ProductPage extends Component {
                                 ProductPrice: this.props.location.state.data.ProductPrice,
                                 ProductQty: this.state.qty
                             })
-                            axios.post('http://3.87.22.103:2024/update-wishlist', { id: user._id, wishlist: user.wishlist })
+                            axios.post('http://3.19.58.80:2024/update-wishlist', { id: user._id, wishlist: user.wishlist })
                                 .then(u => {
                                     UpdateUserData(user)
                                     alert("Product Added To Wishlist")

@@ -14,7 +14,7 @@ export default class Cart extends Component {
         this.componentWillMount = () => {
             const { UserData } = this.context
             if (Object.keys(UserData).length !== 0) {
-                axios.post('http://3.87.22.103:2024/user/get-cart', {
+                axios.post('http://3.19.58.80:2024/user/get-cart', {
                     id: UserData._id
                 })
                     .then(response => {
@@ -38,7 +38,7 @@ export default class Cart extends Component {
         }
         this.RemoveFromCart = (Product) => {
             const { UserData } = this.context
-            axios.post('http://3.87.22.103:2024/user/remove-from-cart', {
+            axios.post('http://3.19.58.80:2024/user/remove-from-cart', {
                 id: UserData._id,
                 cart: this.state.CartItems.filter(x => x.ProductID !== Product.ProductID)
             })
@@ -59,7 +59,7 @@ export default class Cart extends Component {
                 this.setState({
                     CartItems: this.state.CartItems
                 }, () => {
-                    axios.post('http://3.87.22.103:2024/user/add-to-cart', {
+                    axios.post('http://3.19.58.80:2024/user/add-to-cart', {
                         id: UserData._id,
                         cart: this.state.CartItems,
                     })
@@ -83,7 +83,7 @@ export default class Cart extends Component {
                         console.log(UserData)
                         console.log(this.state.CartItems)
                         console.log(Product)
-                        axios.post('http://3.87.22.103:2024/user/add-to-cart', {
+                        axios.post('http://3.19.58.80:2024/user/add-to-cart', {
                             id: UserData._id,
                             cart: this.state.CartItems,
                         })
@@ -109,7 +109,7 @@ export default class Cart extends Component {
                 CartItems: this.state.CartItems
             }, () => {
                 console.log(this.state)
-                axios.post('http://3.87.22.103:2024/user/add-to-cart', {
+                axios.post('http://3.19.58.80:2024/user/add-to-cart', {
                     id: UserData._id,
                     cart: this.state.CartItems,
                 })

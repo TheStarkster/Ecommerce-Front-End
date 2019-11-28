@@ -23,7 +23,7 @@ export default class ProfileAccount extends Component {
         UserData.name = document.getElementById('name').value
         UserData.email = document.getElementById('email').value
         UserData.contact = document.getElementById('contact').value
-        axios.post('http://3.87.22.103:2024/user/update', {
+        axios.post('http://3.19.58.80:2024/user/update', {
             id: UserData._id,
             name: UserData.name,
             email: UserData.email,
@@ -38,7 +38,7 @@ export default class ProfileAccount extends Component {
         document.getElementById('UpdatePassBtn').innerText = "Updating..."
         const { UserData } = this.context
         if (document.getElementById('new-pass').value === document.getElementById('new-pass-confirm').value) {
-            axios.post('http://3.87.22.103:2024/user/update-password', {
+            axios.post('http://3.19.58.80:2024/user/update-password', {
                 id: UserData._id,
                 oldpass: document.getElementById('old-pass').value,
                 newpass: document.getElementById('new-pass').value
@@ -86,7 +86,7 @@ export default class ProfileAccount extends Component {
                     }
                 }
             ]
-            axios.post('http://3.87.22.103:2024/user/update-address', {
+            axios.post('http://3.19.58.80:2024/user/update-address', {
                 id: UserData._id,
                 address: NewUserObject.address
             })

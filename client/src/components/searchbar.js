@@ -15,7 +15,7 @@ class SearchBar extends Component {
             fetching: true
         })
         if (event.target.value === "") {
-            Axios.get('http://3.87.22.103:2024/User-fetch-products')
+            Axios.get('http://3.19.58.80:2024/User-fetch-products')
                 .then(response => {
                     this.props.trigger(response.data.products)
                     setTimeout(() => {
@@ -25,7 +25,7 @@ class SearchBar extends Component {
                     }, 1200)
                 })
         }
-        Axios.get('http://3.87.22.103:2024/find-product/' + event.target.value)
+        Axios.get('http://3.19.58.80:2024/find-product/' + event.target.value)
             .then(response => {
                 this.props.trigger(response.data)
                 setTimeout(() => {

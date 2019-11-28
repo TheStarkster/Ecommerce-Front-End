@@ -26,7 +26,7 @@ class Register extends Component {
         }
         this.handleSubmit = (event) => {
             axios.get('https://ipapi.co/json').then(u => {
-                axios.post('http://3.87.22.103:2024/signup', {
+                axios.post('http://3.19.58.80:2024/signup', {
                     email: this.state.email,
                     pass: this.state.password,
                     name: this.state.name,

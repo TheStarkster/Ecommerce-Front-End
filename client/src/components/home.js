@@ -21,7 +21,7 @@ export default class Home extends Component {
         }
         this.componentWillMount = () => {
             if (localStorage.getItem('to-buy') !== null) {
-                axios.post('http://3.87.22.103:2024/get-product', { id: localStorage.getItem('to-buy') })
+                axios.post('http://3.19.58.80:2024/get-product', { id: localStorage.getItem('to-buy') })
                     .then(response => {
                         localStorage.removeItem('to-buy')
                         this.props.history.push({
@@ -46,7 +46,7 @@ export default class Home extends Component {
                     })
 
             } else {
-                axios.get('http://3.87.22.103:2024/User-fetch-products')
+                axios.get('http://3.19.58.80:2024/User-fetch-products')
                     .then(response => {
                         this.setState({
                             ProductsArray: [...response.data.products]

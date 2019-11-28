@@ -33,7 +33,7 @@ export default class Checkout extends Component {
                         } else {
                             amount = parseFloat(this.props.location.state.data.ProductPrice) * parseFloat(this.props.location.state.data.ProductQty) * 100
                         }
-                        Axios.post('http://3.87.22.103:2024/api/razorpay/create-order', { amount: amount, receipt: "gurkaran_order_54654" })
+                        Axios.post('http://3.19.58.80:2024/api/razorpay/create-order', { amount: amount, receipt: "gurkaran_order_54654" })
                             .then(response => {
                                 this.setState({
                                     orderID: response.data.id
@@ -56,7 +56,7 @@ export default class Checkout extends Component {
                                         }
                                         UpdateUserData(NewUserObject)
 
-                                        Axios.post('http://3.87.22.103:2024/api/razorpay/check-payment', {
+                                        Axios.post('http://3.19.58.80:2024/api/razorpay/check-payment', {
                                             paymentId: response.razorpay_payment_id,
                                             text: {
                                                 CartItems: CartItems,
@@ -105,7 +105,7 @@ export default class Checkout extends Component {
                         this.setState({
                             promoLoading: true
                         })
-                        Axios.post('http://3.87.22.103:2024/user/check-promo', {
+                        Axios.post('http://3.19.58.80:2024/user/check-promo', {
                             id: UserData._id,
                             code: code
                         })
@@ -144,7 +144,7 @@ export default class Checkout extends Component {
                                 }
                             }
                         ]
-                        Axios.post('http://3.87.22.103:2024/user/save-address', {
+                        Axios.post('http://3.19.58.80:2024/user/save-address', {
                             address: NewUserObject.address[0].default,
                             id: UserData._id
                         })

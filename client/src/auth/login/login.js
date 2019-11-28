@@ -28,7 +28,7 @@ class Login extends Component {
                 Loading: 'block',
                 BlurValue: "4px"
             })
-            axios.post('http://3.87.22.103:2024/signin', {
+            axios.post('http://3.19.58.80:2024/signin', {
                 email: this.state.email,
                 pass: this.state.password
             })
